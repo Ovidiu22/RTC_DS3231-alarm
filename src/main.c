@@ -10,6 +10,7 @@
 #include "I2C.h"
 #include "LCD.h"
 
+#define ALARM 0
 
 int main (void)
 {
@@ -18,7 +19,7 @@ int main (void)
 	uint8_t res;
 	ds3231_time_t time;
 	ds3231_alarm1_mode_t mode;
-
+/*
 	void alarm_receive_callback(uint8_t type)
 	{
 		switch (type)
@@ -26,14 +27,12 @@ int main (void)
 			case DS3231_STATUS_ALARM_2 :
 			{
 				ds3231_alarm_clear_flag(DS3231_ALARM_2);
-				ds3231_interface_debug_print("ds3231: irq alarm2.\n");
 			
 				break;
 			}
 			case DS3231_STATUS_ALARM_1 :
 			{
 				ds3231_alarm_clear_flag(DS3231_ALARM_1);
-				ds3231_interface_debug_print("ds3231: irq alarm1.\n");
 			
 				break;
 			}
@@ -51,7 +50,7 @@ int main (void)
 	{
 		return 1;
 	}
-
+*/
 
 // 	res = gpio_interrupt_init();
 // 	if (res != 0)
@@ -64,15 +63,16 @@ int main (void)
 
 // 	mode = DS3231_ALARM1_MODE_ONCE_A_SECOND;
 // 	time.am_pm = DS3231_AM;
-// 	time.date = data;
+// 	time.date = 01;
 // 	time.format = DS3231_FORMAT_24H;
-// 	time.hour = hour;
-// 	time.minute = minute;
-// 	time.month = month;
-// 	time.second = second;
-// 	time.week  = week;
-// 	time.year = year;
+// 	time.hour = 7;
+// 	time.minute = 00;
+// 	time.month = 0;
+// 	time.second = 00;
+// 	time.week  = 1;
+// 	time.year = 0;
 // 	res = ds3231_alarm_set_alarm1(&time, mode);
+	
 // 	if (res != 0)
 // 	{
 // 		(void)ds3231_alarm_deinit();
@@ -99,7 +99,7 @@ int main (void)
 
 	i2c_start((I2C_DEVICE<<1)+I2C_WRITE);
 	i2c_write(DS3231_REG_ALARM1_SECOND);
-	i2c_write(0x5);
+	i2c_write(20);
 
 	i2c_start((I2C_DEVICE<<1)+I2C_WRITE);
 	i2c_write(DS3231_REG_ALARM1_MINUTE);

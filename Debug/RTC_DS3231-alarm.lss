@@ -3,33 +3,31 @@ RTC_DS3231-alarm.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .data         000006ce  00800100  00000cea  00000d7e  2**0
+  0 .data         00000000  00800100  00800100  0000027c  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  1 .text         00000cea  00000000  00000000  00000094  2**1
+  1 .text         00000228  00000000  00000000  00000054  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .bss          0000000f  008007ce  008007ce  0000144c  2**0
-                  ALLOC
-  3 .comment      00000030  00000000  00000000  0000144c  2**0
+  2 .comment      00000030  00000000  00000000  0000027c  2**0
                   CONTENTS, READONLY
-  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  0000147c  2**2
+  3 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  000002ac  2**2
                   CONTENTS, READONLY
-  5 .debug_aranges 00000300  00000000  00000000  000014bc  2**0
+  4 .debug_aranges 00000088  00000000  00000000  000002ec  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   0000401e  00000000  00000000  000017bc  2**0
+  5 .debug_info   0000129e  00000000  00000000  00000374  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 00001004  00000000  00000000  000057da  2**0
+  6 .debug_abbrev 000008ee  00000000  00000000  00001612  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   00002d5e  00000000  00000000  000067de  2**0
+  7 .debug_line   00000cff  00000000  00000000  00001f00  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  00000c94  00000000  00000000  0000953c  2**2
+  8 .debug_frame  00000140  00000000  00000000  00002c00  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    000127d3  00000000  00000000  0000a1d0  2**0
+  9 .debug_str    00011b11  00000000  00000000  00002d40  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    0000478e  00000000  00000000  0001c9a3  2**0
+ 10 .debug_loc    000008b9  00000000  00000000  00014851  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 000002a0  00000000  00000000  00021131  2**0
+ 11 .debug_ranges 00000068  00000000  00000000  0001510a  2**0
                   CONTENTS, READONLY, DEBUGGING
- 13 .debug_macro  00001411  00000000  00000000  000213d1  2**0
+ 12 .debug_macro  000008b9  00000000  00000000  00015172  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -97,2197 +95,382 @@ Disassembly of section .text:
   72:	cd bf       	out	0x3d, r28	; 61
 
 00000074 <__do_copy_data>:
-  74:	17 e0       	ldi	r17, 0x07	; 7
+  74:	11 e0       	ldi	r17, 0x01	; 1
   76:	a0 e0       	ldi	r26, 0x00	; 0
   78:	b1 e0       	ldi	r27, 0x01	; 1
-  7a:	ea ee       	ldi	r30, 0xEA	; 234
-  7c:	fc e0       	ldi	r31, 0x0C	; 12
+  7a:	e8 e2       	ldi	r30, 0x28	; 40
+  7c:	f2 e0       	ldi	r31, 0x02	; 2
   7e:	02 c0       	rjmp	.+4      	; 0x84 <__do_copy_data+0x10>
   80:	05 90       	lpm	r0, Z+
   82:	0d 92       	st	X+, r0
-  84:	ae 3c       	cpi	r26, 0xCE	; 206
+  84:	a0 30       	cpi	r26, 0x00	; 0
   86:	b1 07       	cpc	r27, r17
   88:	d9 f7       	brne	.-10     	; 0x80 <__do_copy_data+0xc>
 
 0000008a <__do_clear_bss>:
-  8a:	27 e0       	ldi	r18, 0x07	; 7
-  8c:	ae ec       	ldi	r26, 0xCE	; 206
-  8e:	b7 e0       	ldi	r27, 0x07	; 7
+  8a:	21 e0       	ldi	r18, 0x01	; 1
+  8c:	a0 e0       	ldi	r26, 0x00	; 0
+  8e:	b1 e0       	ldi	r27, 0x01	; 1
   90:	01 c0       	rjmp	.+2      	; 0x94 <.do_clear_bss_start>
 
 00000092 <.do_clear_bss_loop>:
   92:	1d 92       	st	X+, r1
 
 00000094 <.do_clear_bss_start>:
-  94:	ad 3d       	cpi	r26, 0xDD	; 221
+  94:	a0 30       	cpi	r26, 0x00	; 0
   96:	b2 07       	cpc	r27, r18
   98:	e1 f7       	brne	.-8      	; 0x92 <.do_clear_bss_loop>
-  9a:	2f d5       	rcall	.+2654   	; 0xafa <main>
-  9c:	24 c6       	rjmp	.+3144   	; 0xce6 <_exit>
+  9a:	c0 d0       	rcall	.+384    	; 0x21c <main>
+  9c:	c3 c0       	rjmp	.+390    	; 0x224 <_exit>
 
 0000009e <__bad_interrupt>:
   9e:	b0 cf       	rjmp	.-160    	; 0x0 <__vectors>
 
-000000a0 <a_ds3231_iic_write>:
-            handle->receive_callback(DS3231_STATUS_ALARM_1);                                 /* run callback */
-        }
-    }
-    
-    return 0;                                                                                /* success return 0 */
-}
-  a0:	cf 93       	push	r28
-  a2:	df 93       	push	r29
-  a4:	1f 92       	push	r1
-  a6:	cd b7       	in	r28, 0x3d	; 61
-  a8:	de b7       	in	r29, 0x3e	; 62
-  aa:	49 83       	std	Y+1, r20	; 0x01
-  ac:	dc 01       	movw	r26, r24
-  ae:	14 96       	adiw	r26, 0x04	; 4
-  b0:	ed 91       	ld	r30, X+
-  b2:	fc 91       	ld	r31, X
-  b4:	15 97       	sbiw	r26, 0x05	; 5
-  b6:	21 e0       	ldi	r18, 0x01	; 1
-  b8:	30 e0       	ldi	r19, 0x00	; 0
-  ba:	ae 01       	movw	r20, r28
-  bc:	4f 5f       	subi	r20, 0xFF	; 255
-  be:	5f 4f       	sbci	r21, 0xFF	; 255
-  c0:	80 ed       	ldi	r24, 0xD0	; 208
-  c2:	09 95       	icall
-  c4:	91 e0       	ldi	r25, 0x01	; 1
-  c6:	81 11       	cpse	r24, r1
-  c8:	01 c0       	rjmp	.+2      	; 0xcc <a_ds3231_iic_write+0x2c>
-  ca:	90 e0       	ldi	r25, 0x00	; 0
-  cc:	89 2f       	mov	r24, r25
-  ce:	0f 90       	pop	r0
-  d0:	df 91       	pop	r29
-  d2:	cf 91       	pop	r28
-  d4:	08 95       	ret
-
-000000d6 <a_ds3231_iic_multiple_read>:
-  d6:	30 e0       	ldi	r19, 0x00	; 0
-  d8:	dc 01       	movw	r26, r24
-  da:	16 96       	adiw	r26, 0x06	; 6
-  dc:	ed 91       	ld	r30, X+
-  de:	fc 91       	ld	r31, X
-  e0:	17 97       	sbiw	r26, 0x07	; 7
-  e2:	80 ed       	ldi	r24, 0xD0	; 208
-  e4:	09 95       	icall
-  e6:	91 e0       	ldi	r25, 0x01	; 1
-  e8:	81 11       	cpse	r24, r1
-  ea:	01 c0       	rjmp	.+2      	; 0xee <a_ds3231_iic_multiple_read+0x18>
-  ec:	90 e0       	ldi	r25, 0x00	; 0
-  ee:	89 2f       	mov	r24, r25
-  f0:	08 95       	ret
-
-000000f2 <ds3231_set_oscillator>:
-  f2:	ef 92       	push	r14
-  f4:	ff 92       	push	r15
-  f6:	0f 93       	push	r16
-  f8:	1f 93       	push	r17
-  fa:	cf 93       	push	r28
-  fc:	df 93       	push	r29
-  fe:	1f 92       	push	r1
- 100:	cd b7       	in	r28, 0x3d	; 61
- 102:	de b7       	in	r29, 0x3e	; 62
- 104:	00 97       	sbiw	r24, 0x00	; 0
- 106:	b9 f1       	breq	.+110    	; 0x176 <ds3231_set_oscillator+0x84>
- 108:	dc 01       	movw	r26, r24
- 10a:	1e 96       	adiw	r26, 0x0e	; 14
- 10c:	1c 91       	ld	r17, X
- 10e:	11 30       	cpi	r17, 0x01	; 1
- 110:	a1 f5       	brne	.+104    	; 0x17a <ds3231_set_oscillator+0x88>
- 112:	06 2f       	mov	r16, r22
- 114:	7c 01       	movw	r14, r24
- 116:	21 e0       	ldi	r18, 0x01	; 1
- 118:	ae 01       	movw	r20, r28
- 11a:	4f 5f       	subi	r20, 0xFF	; 255
- 11c:	5f 4f       	sbci	r21, 0xFF	; 255
- 11e:	6e e0       	ldi	r22, 0x0E	; 14
- 120:	da df       	rcall	.-76     	; 0xd6 <a_ds3231_iic_multiple_read>
- 122:	88 23       	and	r24, r24
- 124:	69 f0       	breq	.+26     	; 0x140 <ds3231_set_oscillator+0x4e>
- 126:	8f e7       	ldi	r24, 0x7F	; 127
- 128:	94 e0       	ldi	r25, 0x04	; 4
- 12a:	9f 93       	push	r25
- 12c:	8f 93       	push	r24
- 12e:	d7 01       	movw	r26, r14
- 130:	18 96       	adiw	r26, 0x08	; 8
- 132:	ed 91       	ld	r30, X+
- 134:	fc 91       	ld	r31, X
- 136:	19 97       	sbiw	r26, 0x09	; 9
- 138:	09 95       	icall
- 13a:	0f 90       	pop	r0
- 13c:	0f 90       	pop	r0
- 13e:	20 c0       	rjmp	.+64     	; 0x180 <ds3231_set_oscillator+0x8e>
- 140:	49 81       	ldd	r20, Y+1	; 0x01
- 142:	4f 77       	andi	r20, 0x7F	; 127
- 144:	00 23       	and	r16, r16
- 146:	11 f0       	breq	.+4      	; 0x14c <ds3231_set_oscillator+0x5a>
- 148:	80 e0       	ldi	r24, 0x00	; 0
- 14a:	01 c0       	rjmp	.+2      	; 0x14e <ds3231_set_oscillator+0x5c>
- 14c:	80 e8       	ldi	r24, 0x80	; 128
- 14e:	48 2b       	or	r20, r24
- 150:	49 83       	std	Y+1, r20	; 0x01
- 152:	6e e0       	ldi	r22, 0x0E	; 14
- 154:	c7 01       	movw	r24, r14
- 156:	a4 df       	rcall	.-184    	; 0xa0 <a_ds3231_iic_write>
- 158:	88 23       	and	r24, r24
- 15a:	89 f0       	breq	.+34     	; 0x17e <ds3231_set_oscillator+0x8c>
- 15c:	8d e9       	ldi	r24, 0x9D	; 157
- 15e:	94 e0       	ldi	r25, 0x04	; 4
- 160:	9f 93       	push	r25
- 162:	8f 93       	push	r24
- 164:	d7 01       	movw	r26, r14
- 166:	18 96       	adiw	r26, 0x08	; 8
- 168:	ed 91       	ld	r30, X+
- 16a:	fc 91       	ld	r31, X
- 16c:	19 97       	sbiw	r26, 0x09	; 9
- 16e:	09 95       	icall
- 170:	0f 90       	pop	r0
- 172:	0f 90       	pop	r0
- 174:	05 c0       	rjmp	.+10     	; 0x180 <ds3231_set_oscillator+0x8e>
- 176:	12 e0       	ldi	r17, 0x02	; 2
- 178:	03 c0       	rjmp	.+6      	; 0x180 <ds3231_set_oscillator+0x8e>
- 17a:	13 e0       	ldi	r17, 0x03	; 3
- 17c:	01 c0       	rjmp	.+2      	; 0x180 <ds3231_set_oscillator+0x8e>
- 17e:	10 e0       	ldi	r17, 0x00	; 0
- 180:	81 2f       	mov	r24, r17
- 182:	0f 90       	pop	r0
- 184:	df 91       	pop	r29
- 186:	cf 91       	pop	r28
- 188:	1f 91       	pop	r17
- 18a:	0f 91       	pop	r16
- 18c:	ff 90       	pop	r15
- 18e:	ef 90       	pop	r14
- 190:	08 95       	ret
-
-00000192 <ds3231_set_pin>:
- 192:	ef 92       	push	r14
- 194:	ff 92       	push	r15
- 196:	0f 93       	push	r16
- 198:	1f 93       	push	r17
- 19a:	cf 93       	push	r28
- 19c:	df 93       	push	r29
- 19e:	1f 92       	push	r1
- 1a0:	cd b7       	in	r28, 0x3d	; 61
- 1a2:	de b7       	in	r29, 0x3e	; 62
- 1a4:	00 97       	sbiw	r24, 0x00	; 0
- 1a6:	a9 f1       	breq	.+106    	; 0x212 <ds3231_set_pin+0x80>
- 1a8:	dc 01       	movw	r26, r24
- 1aa:	1e 96       	adiw	r26, 0x0e	; 14
- 1ac:	1c 91       	ld	r17, X
- 1ae:	11 30       	cpi	r17, 0x01	; 1
- 1b0:	91 f5       	brne	.+100    	; 0x216 <ds3231_set_pin+0x84>
- 1b2:	06 2f       	mov	r16, r22
- 1b4:	7c 01       	movw	r14, r24
- 1b6:	21 e0       	ldi	r18, 0x01	; 1
- 1b8:	ae 01       	movw	r20, r28
- 1ba:	4f 5f       	subi	r20, 0xFF	; 255
- 1bc:	5f 4f       	sbci	r21, 0xFF	; 255
- 1be:	6e e0       	ldi	r22, 0x0E	; 14
- 1c0:	8a df       	rcall	.-236    	; 0xd6 <a_ds3231_iic_multiple_read>
- 1c2:	88 23       	and	r24, r24
- 1c4:	69 f0       	breq	.+26     	; 0x1e0 <ds3231_set_pin+0x4e>
- 1c6:	8f e7       	ldi	r24, 0x7F	; 127
- 1c8:	94 e0       	ldi	r25, 0x04	; 4
- 1ca:	9f 93       	push	r25
- 1cc:	8f 93       	push	r24
- 1ce:	d7 01       	movw	r26, r14
- 1d0:	18 96       	adiw	r26, 0x08	; 8
- 1d2:	ed 91       	ld	r30, X+
- 1d4:	fc 91       	ld	r31, X
- 1d6:	19 97       	sbiw	r26, 0x09	; 9
- 1d8:	09 95       	icall
- 1da:	0f 90       	pop	r0
- 1dc:	0f 90       	pop	r0
- 1de:	1e c0       	rjmp	.+60     	; 0x21c <ds3231_set_pin+0x8a>
- 1e0:	49 81       	ldd	r20, Y+1	; 0x01
- 1e2:	4b 7f       	andi	r20, 0xFB	; 251
- 1e4:	60 2f       	mov	r22, r16
- 1e6:	66 0f       	add	r22, r22
- 1e8:	66 0f       	add	r22, r22
- 1ea:	46 2b       	or	r20, r22
- 1ec:	49 83       	std	Y+1, r20	; 0x01
- 1ee:	6e e0       	ldi	r22, 0x0E	; 14
- 1f0:	c7 01       	movw	r24, r14
- 1f2:	56 df       	rcall	.-340    	; 0xa0 <a_ds3231_iic_write>
- 1f4:	88 23       	and	r24, r24
- 1f6:	89 f0       	breq	.+34     	; 0x21a <ds3231_set_pin+0x88>
- 1f8:	8d e9       	ldi	r24, 0x9D	; 157
- 1fa:	94 e0       	ldi	r25, 0x04	; 4
- 1fc:	9f 93       	push	r25
- 1fe:	8f 93       	push	r24
- 200:	d7 01       	movw	r26, r14
- 202:	18 96       	adiw	r26, 0x08	; 8
- 204:	ed 91       	ld	r30, X+
- 206:	fc 91       	ld	r31, X
- 208:	19 97       	sbiw	r26, 0x09	; 9
- 20a:	09 95       	icall
- 20c:	0f 90       	pop	r0
- 20e:	0f 90       	pop	r0
- 210:	05 c0       	rjmp	.+10     	; 0x21c <ds3231_set_pin+0x8a>
- 212:	12 e0       	ldi	r17, 0x02	; 2
- 214:	03 c0       	rjmp	.+6      	; 0x21c <ds3231_set_pin+0x8a>
- 216:	13 e0       	ldi	r17, 0x03	; 3
- 218:	01 c0       	rjmp	.+2      	; 0x21c <ds3231_set_pin+0x8a>
- 21a:	10 e0       	ldi	r17, 0x00	; 0
- 21c:	81 2f       	mov	r24, r17
- 21e:	0f 90       	pop	r0
- 220:	df 91       	pop	r29
- 222:	cf 91       	pop	r28
- 224:	1f 91       	pop	r17
- 226:	0f 91       	pop	r16
- 228:	ff 90       	pop	r15
- 22a:	ef 90       	pop	r14
- 22c:	08 95       	ret
-
-0000022e <ds3231_set_square_wave>:
- 22e:	ef 92       	push	r14
- 230:	ff 92       	push	r15
- 232:	0f 93       	push	r16
- 234:	1f 93       	push	r17
- 236:	cf 93       	push	r28
- 238:	df 93       	push	r29
- 23a:	1f 92       	push	r1
- 23c:	cd b7       	in	r28, 0x3d	; 61
- 23e:	de b7       	in	r29, 0x3e	; 62
- 240:	00 97       	sbiw	r24, 0x00	; 0
- 242:	b1 f1       	breq	.+108    	; 0x2b0 <ds3231_set_square_wave+0x82>
- 244:	dc 01       	movw	r26, r24
- 246:	1e 96       	adiw	r26, 0x0e	; 14
- 248:	1c 91       	ld	r17, X
- 24a:	11 30       	cpi	r17, 0x01	; 1
- 24c:	99 f5       	brne	.+102    	; 0x2b4 <ds3231_set_square_wave+0x86>
- 24e:	06 2f       	mov	r16, r22
- 250:	7c 01       	movw	r14, r24
- 252:	21 e0       	ldi	r18, 0x01	; 1
- 254:	ae 01       	movw	r20, r28
- 256:	4f 5f       	subi	r20, 0xFF	; 255
- 258:	5f 4f       	sbci	r21, 0xFF	; 255
- 25a:	6e e0       	ldi	r22, 0x0E	; 14
- 25c:	3c df       	rcall	.-392    	; 0xd6 <a_ds3231_iic_multiple_read>
- 25e:	88 23       	and	r24, r24
- 260:	69 f0       	breq	.+26     	; 0x27c <ds3231_set_square_wave+0x4e>
- 262:	8f e7       	ldi	r24, 0x7F	; 127
- 264:	94 e0       	ldi	r25, 0x04	; 4
- 266:	9f 93       	push	r25
- 268:	8f 93       	push	r24
- 26a:	d7 01       	movw	r26, r14
- 26c:	18 96       	adiw	r26, 0x08	; 8
- 26e:	ed 91       	ld	r30, X+
- 270:	fc 91       	ld	r31, X
- 272:	19 97       	sbiw	r26, 0x09	; 9
- 274:	09 95       	icall
- 276:	0f 90       	pop	r0
- 278:	0f 90       	pop	r0
- 27a:	1f c0       	rjmp	.+62     	; 0x2ba <ds3231_set_square_wave+0x8c>
- 27c:	49 81       	ldd	r20, Y+1	; 0x01
- 27e:	4f 7b       	andi	r20, 0xBF	; 191
- 280:	b0 e4       	ldi	r27, 0x40	; 64
- 282:	0b 9f       	mul	r16, r27
- 284:	c0 01       	movw	r24, r0
- 286:	11 24       	eor	r1, r1
- 288:	48 2b       	or	r20, r24
- 28a:	49 83       	std	Y+1, r20	; 0x01
- 28c:	6e e0       	ldi	r22, 0x0E	; 14
- 28e:	c7 01       	movw	r24, r14
- 290:	07 df       	rcall	.-498    	; 0xa0 <a_ds3231_iic_write>
- 292:	88 23       	and	r24, r24
- 294:	89 f0       	breq	.+34     	; 0x2b8 <ds3231_set_square_wave+0x8a>
- 296:	8d e9       	ldi	r24, 0x9D	; 157
- 298:	94 e0       	ldi	r25, 0x04	; 4
- 29a:	9f 93       	push	r25
- 29c:	8f 93       	push	r24
- 29e:	d7 01       	movw	r26, r14
- 2a0:	18 96       	adiw	r26, 0x08	; 8
- 2a2:	ed 91       	ld	r30, X+
- 2a4:	fc 91       	ld	r31, X
- 2a6:	19 97       	sbiw	r26, 0x09	; 9
- 2a8:	09 95       	icall
- 2aa:	0f 90       	pop	r0
- 2ac:	0f 90       	pop	r0
- 2ae:	05 c0       	rjmp	.+10     	; 0x2ba <ds3231_set_square_wave+0x8c>
- 2b0:	12 e0       	ldi	r17, 0x02	; 2
- 2b2:	03 c0       	rjmp	.+6      	; 0x2ba <ds3231_set_square_wave+0x8c>
- 2b4:	13 e0       	ldi	r17, 0x03	; 3
- 2b6:	01 c0       	rjmp	.+2      	; 0x2ba <ds3231_set_square_wave+0x8c>
- 2b8:	10 e0       	ldi	r17, 0x00	; 0
- 2ba:	81 2f       	mov	r24, r17
- 2bc:	0f 90       	pop	r0
- 2be:	df 91       	pop	r29
- 2c0:	cf 91       	pop	r28
- 2c2:	1f 91       	pop	r17
- 2c4:	0f 91       	pop	r16
- 2c6:	ff 90       	pop	r15
- 2c8:	ef 90       	pop	r14
- 2ca:	08 95       	ret
-
-000002cc <ds3231_set_aging_offset>:
- 2cc:	0f 93       	push	r16
- 2ce:	1f 93       	push	r17
- 2d0:	cf 93       	push	r28
- 2d2:	00 97       	sbiw	r24, 0x00	; 0
- 2d4:	c1 f0       	breq	.+48     	; 0x306 <ds3231_set_aging_offset+0x3a>
- 2d6:	dc 01       	movw	r26, r24
- 2d8:	1e 96       	adiw	r26, 0x0e	; 14
- 2da:	cc 91       	ld	r28, X
- 2dc:	c1 30       	cpi	r28, 0x01	; 1
- 2de:	a9 f4       	brne	.+42     	; 0x30a <ds3231_set_aging_offset+0x3e>
- 2e0:	46 2f       	mov	r20, r22
- 2e2:	8c 01       	movw	r16, r24
- 2e4:	60 e1       	ldi	r22, 0x10	; 16
- 2e6:	dc de       	rcall	.-584    	; 0xa0 <a_ds3231_iic_write>
- 2e8:	88 23       	and	r24, r24
- 2ea:	89 f0       	breq	.+34     	; 0x30e <ds3231_set_aging_offset+0x42>
- 2ec:	82 e1       	ldi	r24, 0x12	; 18
- 2ee:	95 e0       	ldi	r25, 0x05	; 5
- 2f0:	9f 93       	push	r25
- 2f2:	8f 93       	push	r24
- 2f4:	d8 01       	movw	r26, r16
- 2f6:	18 96       	adiw	r26, 0x08	; 8
- 2f8:	ed 91       	ld	r30, X+
- 2fa:	fc 91       	ld	r31, X
- 2fc:	19 97       	sbiw	r26, 0x09	; 9
- 2fe:	09 95       	icall
- 300:	0f 90       	pop	r0
- 302:	0f 90       	pop	r0
- 304:	05 c0       	rjmp	.+10     	; 0x310 <ds3231_set_aging_offset+0x44>
- 306:	c2 e0       	ldi	r28, 0x02	; 2
- 308:	03 c0       	rjmp	.+6      	; 0x310 <ds3231_set_aging_offset+0x44>
- 30a:	c3 e0       	ldi	r28, 0x03	; 3
- 30c:	01 c0       	rjmp	.+2      	; 0x310 <ds3231_set_aging_offset+0x44>
- 30e:	c0 e0       	ldi	r28, 0x00	; 0
- 310:	8c 2f       	mov	r24, r28
- 312:	cf 91       	pop	r28
- 314:	1f 91       	pop	r17
- 316:	0f 91       	pop	r16
- 318:	08 95       	ret
-
-0000031a <ds3231_aging_offset_convert_to_register>:
- 31a:	cf 93       	push	r28
- 31c:	df 93       	push	r29
- 31e:	00 97       	sbiw	r24, 0x00	; 0
- 320:	81 f0       	breq	.+32     	; 0x342 <ds3231_aging_offset_convert_to_register+0x28>
- 322:	fc 01       	movw	r30, r24
- 324:	86 85       	ldd	r24, Z+14	; 0x0e
- 326:	81 30       	cpi	r24, 0x01	; 1
- 328:	71 f4       	brne	.+28     	; 0x346 <ds3231_aging_offset_convert_to_register+0x2c>
- 32a:	e9 01       	movw	r28, r18
- 32c:	cb 01       	movw	r24, r22
- 32e:	ba 01       	movw	r22, r20
- 330:	2f e8       	ldi	r18, 0x8F	; 143
- 332:	32 ec       	ldi	r19, 0xC2	; 194
- 334:	45 ef       	ldi	r20, 0xF5	; 245
- 336:	5d e3       	ldi	r21, 0x3D	; 61
- 338:	ec d3       	rcall	.+2008   	; 0xb12 <__divsf3>
- 33a:	53 d4       	rcall	.+2214   	; 0xbe2 <__fixsfsi>
- 33c:	68 83       	st	Y, r22
- 33e:	80 e0       	ldi	r24, 0x00	; 0
- 340:	03 c0       	rjmp	.+6      	; 0x348 <ds3231_aging_offset_convert_to_register+0x2e>
- 342:	82 e0       	ldi	r24, 0x02	; 2
- 344:	01 c0       	rjmp	.+2      	; 0x348 <ds3231_aging_offset_convert_to_register+0x2e>
- 346:	83 e0       	ldi	r24, 0x03	; 3
- 348:	df 91       	pop	r29
- 34a:	cf 91       	pop	r28
- 34c:	08 95       	ret
-
-0000034e <ds3231_init>:
- *            - 2 handle is NULL
- *            - 3 linked functions is NULL
- * @note      none
- */
-uint8_t ds3231_init(ds3231_handle_t *handle)
-{
- 34e:	ff 92       	push	r15
- 350:	0f 93       	push	r16
- 352:	1f 93       	push	r17
- 354:	cf 93       	push	r28
- 356:	df 93       	push	r29
- 358:	1f 92       	push	r1
- 35a:	cd b7       	in	r28, 0x3d	; 61
- 35c:	de b7       	in	r29, 0x3e	; 62
-    uint8_t res;
-    uint8_t prev;
-    
-    if (handle == NULL)                                                                      /* check handle */
- 35e:	00 97       	sbiw	r24, 0x00	; 0
- 360:	09 f4       	brne	.+2      	; 0x364 <ds3231_init+0x16>
- 362:	d1 c0       	rjmp	.+418    	; 0x506 <__LOCK_REGION_LENGTH__+0x106>
-    {
-        return 2;                                                                            /* return error */
-    }
-    if (handle->debug_print == NULL)                                                         /* check debug_print */
- 364:	dc 01       	movw	r26, r24
- 366:	18 96       	adiw	r26, 0x08	; 8
- 368:	2d 91       	ld	r18, X+
- 36a:	3c 91       	ld	r19, X
- 36c:	19 97       	sbiw	r26, 0x09	; 9
- 36e:	21 15       	cp	r18, r1
- 370:	31 05       	cpc	r19, r1
- 372:	09 f4       	brne	.+2      	; 0x376 <ds3231_init+0x28>
- 374:	cc c0       	rjmp	.+408    	; 0x50e <__LOCK_REGION_LENGTH__+0x10e>
- 376:	8c 01       	movw	r16, r24
-    {
-        return 3;                                                                            /* return error */
-    }
-    if (handle->iic_init == NULL)                                                            /* check iic_init */
- 378:	ed 91       	ld	r30, X+
- 37a:	fc 91       	ld	r31, X
- 37c:	30 97       	sbiw	r30, 0x00	; 0
- 37e:	69 f4       	brne	.+26     	; 0x39a <ds3231_init+0x4c>
-    {
-        handle->debug_print("ds3231: iic_init is null.\n");                                  /* iic_init is null */
- 380:	8d e4       	ldi	r24, 0x4D	; 77
- 382:	95 e0       	ldi	r25, 0x05	; 5
- 384:	9f 93       	push	r25
- 386:	8f 93       	push	r24
- 388:	f9 01       	movw	r30, r18
- 38a:	09 95       	icall
-       
-        return 3;                                                                            /* return error */
- 38c:	0f 90       	pop	r0
- 38e:	0f 90       	pop	r0
- 390:	0f 2e       	mov	r0, r31
- 392:	f3 e0       	ldi	r31, 0x03	; 3
- 394:	ff 2e       	mov	r15, r31
- 396:	f0 2d       	mov	r31, r0
- 398:	be c0       	rjmp	.+380    	; 0x516 <__LOCK_REGION_LENGTH__+0x116>
-    }
-    if (handle->iic_deinit == NULL)                                                          /* check iic_deinit */
- 39a:	dc 01       	movw	r26, r24
- 39c:	12 96       	adiw	r26, 0x02	; 2
- 39e:	8d 91       	ld	r24, X+
- 3a0:	9c 91       	ld	r25, X
- 3a2:	13 97       	sbiw	r26, 0x03	; 3
- 3a4:	89 2b       	or	r24, r25
- 3a6:	69 f4       	brne	.+26     	; 0x3c2 <ds3231_init+0x74>
-    {
-        handle->debug_print("ds3231: iic_deinit is null.\n");                                /* iic_deinit is null */
- 3a8:	88 e6       	ldi	r24, 0x68	; 104
- 3aa:	95 e0       	ldi	r25, 0x05	; 5
- 3ac:	9f 93       	push	r25
- 3ae:	8f 93       	push	r24
- 3b0:	f9 01       	movw	r30, r18
- 3b2:	09 95       	icall
-       
-        return 3;                                                                            /* return error */
- 3b4:	0f 90       	pop	r0
- 3b6:	0f 90       	pop	r0
- 3b8:	0f 2e       	mov	r0, r31
- 3ba:	f3 e0       	ldi	r31, 0x03	; 3
- 3bc:	ff 2e       	mov	r15, r31
- 3be:	f0 2d       	mov	r31, r0
- 3c0:	aa c0       	rjmp	.+340    	; 0x516 <__LOCK_REGION_LENGTH__+0x116>
-    }
-    if (handle->iic_write == NULL)                                                           /* check iic_write */
- 3c2:	d8 01       	movw	r26, r16
- 3c4:	14 96       	adiw	r26, 0x04	; 4
- 3c6:	8d 91       	ld	r24, X+
- 3c8:	9c 91       	ld	r25, X
- 3ca:	15 97       	sbiw	r26, 0x05	; 5
- 3cc:	89 2b       	or	r24, r25
- 3ce:	69 f4       	brne	.+26     	; 0x3ea <ds3231_init+0x9c>
-    {
-        handle->debug_print("ds3231: iic_write is null.\n");                                 /* iic_write is null */
- 3d0:	85 e8       	ldi	r24, 0x85	; 133
- 3d2:	95 e0       	ldi	r25, 0x05	; 5
- 3d4:	9f 93       	push	r25
- 3d6:	8f 93       	push	r24
- 3d8:	f9 01       	movw	r30, r18
- 3da:	09 95       	icall
-       
-        return 3;                                                                            /* return error */
- 3dc:	0f 90       	pop	r0
- 3de:	0f 90       	pop	r0
- 3e0:	0f 2e       	mov	r0, r31
- 3e2:	f3 e0       	ldi	r31, 0x03	; 3
- 3e4:	ff 2e       	mov	r15, r31
- 3e6:	f0 2d       	mov	r31, r0
- 3e8:	96 c0       	rjmp	.+300    	; 0x516 <__LOCK_REGION_LENGTH__+0x116>
-    }
-    if (handle->iic_read == NULL)                                                            /* check iic_read */
- 3ea:	d8 01       	movw	r26, r16
- 3ec:	16 96       	adiw	r26, 0x06	; 6
- 3ee:	8d 91       	ld	r24, X+
- 3f0:	9c 91       	ld	r25, X
- 3f2:	17 97       	sbiw	r26, 0x07	; 7
- 3f4:	89 2b       	or	r24, r25
- 3f6:	69 f4       	brne	.+26     	; 0x412 <__LOCK_REGION_LENGTH__+0x12>
-    {
-        handle->debug_print("ds3231: iic_read is null.\n");                                  /* iic_read is null */
- 3f8:	81 ea       	ldi	r24, 0xA1	; 161
- 3fa:	95 e0       	ldi	r25, 0x05	; 5
- 3fc:	9f 93       	push	r25
- 3fe:	8f 93       	push	r24
- 400:	f9 01       	movw	r30, r18
- 402:	09 95       	icall
-       
-        return 3;                                                                            /* return error */
- 404:	0f 90       	pop	r0
- 406:	0f 90       	pop	r0
- 408:	0f 2e       	mov	r0, r31
- 40a:	f3 e0       	ldi	r31, 0x03	; 3
- 40c:	ff 2e       	mov	r15, r31
- 40e:	f0 2d       	mov	r31, r0
- 410:	82 c0       	rjmp	.+260    	; 0x516 <__LOCK_REGION_LENGTH__+0x116>
-    }
-    if (handle->delay_ms == NULL)                                                            /* check delay_ms */
- 412:	d8 01       	movw	r26, r16
- 414:	1c 96       	adiw	r26, 0x0c	; 12
- 416:	8d 91       	ld	r24, X+
- 418:	9c 91       	ld	r25, X
- 41a:	1d 97       	sbiw	r26, 0x0d	; 13
- 41c:	89 2b       	or	r24, r25
- 41e:	69 f4       	brne	.+26     	; 0x43a <__LOCK_REGION_LENGTH__+0x3a>
-    {
-        handle->debug_print("ds3231: delay_ms is null.\n");                                  /* delay_ms is null */
- 420:	8c eb       	ldi	r24, 0xBC	; 188
- 422:	95 e0       	ldi	r25, 0x05	; 5
- 424:	9f 93       	push	r25
- 426:	8f 93       	push	r24
- 428:	f9 01       	movw	r30, r18
- 42a:	09 95       	icall
-       
-        return 3;                                                                            /* return error */
- 42c:	0f 90       	pop	r0
- 42e:	0f 90       	pop	r0
- 430:	0f 2e       	mov	r0, r31
- 432:	f3 e0       	ldi	r31, 0x03	; 3
- 434:	ff 2e       	mov	r15, r31
- 436:	f0 2d       	mov	r31, r0
- 438:	6e c0       	rjmp	.+220    	; 0x516 <__LOCK_REGION_LENGTH__+0x116>
-    }
-    if (handle->receive_callback == NULL)                                                    /* check receive_callback */
- 43a:	d8 01       	movw	r26, r16
- 43c:	1a 96       	adiw	r26, 0x0a	; 10
- 43e:	8d 91       	ld	r24, X+
- 440:	9c 91       	ld	r25, X
- 442:	1b 97       	sbiw	r26, 0x0b	; 11
- 444:	89 2b       	or	r24, r25
- 446:	69 f4       	brne	.+26     	; 0x462 <__LOCK_REGION_LENGTH__+0x62>
-    {
-        handle->debug_print("ds3231: receive_callback is null.\n");                          /* receive_callback is null */
- 448:	87 ed       	ldi	r24, 0xD7	; 215
- 44a:	95 e0       	ldi	r25, 0x05	; 5
- 44c:	9f 93       	push	r25
- 44e:	8f 93       	push	r24
- 450:	f9 01       	movw	r30, r18
- 452:	09 95       	icall
-       
-        return 3;                                                                            /* return error */
- 454:	0f 90       	pop	r0
- 456:	0f 90       	pop	r0
- 458:	0f 2e       	mov	r0, r31
- 45a:	f3 e0       	ldi	r31, 0x03	; 3
- 45c:	ff 2e       	mov	r15, r31
- 45e:	f0 2d       	mov	r31, r0
- 460:	5a c0       	rjmp	.+180    	; 0x516 <__LOCK_REGION_LENGTH__+0x116>
-    }
-    
-    if (handle->iic_init() != 0)                                                             /* iic init */
- 462:	09 95       	icall
- 464:	f8 2e       	mov	r15, r24
- 466:	88 23       	and	r24, r24
- 468:	79 f0       	breq	.+30     	; 0x488 <__LOCK_REGION_LENGTH__+0x88>
-    {
-        handle->debug_print("ds3231: iic init failed.\n");                                   /* iic init failed */
- 46a:	8a ef       	ldi	r24, 0xFA	; 250
- 46c:	95 e0       	ldi	r25, 0x05	; 5
- 46e:	9f 93       	push	r25
- 470:	8f 93       	push	r24
- 472:	d8 01       	movw	r26, r16
- 474:	18 96       	adiw	r26, 0x08	; 8
- 476:	ed 91       	ld	r30, X+
- 478:	fc 91       	ld	r31, X
- 47a:	19 97       	sbiw	r26, 0x09	; 9
- 47c:	09 95       	icall
-       
-        return 1;                                                                            /* return error */
- 47e:	0f 90       	pop	r0
- 480:	0f 90       	pop	r0
- 482:	ff 24       	eor	r15, r15
- 484:	f3 94       	inc	r15
- 486:	47 c0       	rjmp	.+142    	; 0x516 <__LOCK_REGION_LENGTH__+0x116>
-    }
-    res = a_ds3231_iic_multiple_read(handle, DS3231_REG_STATUS, (uint8_t *)&prev, 1);        /* multiple_read */
- 488:	21 e0       	ldi	r18, 0x01	; 1
- 48a:	ae 01       	movw	r20, r28
- 48c:	4f 5f       	subi	r20, 0xFF	; 255
- 48e:	5f 4f       	sbci	r21, 0xFF	; 255
- 490:	6f e0       	ldi	r22, 0x0F	; 15
- 492:	c8 01       	movw	r24, r16
- 494:	20 de       	rcall	.-960    	; 0xd6 <a_ds3231_iic_multiple_read>
-    if (res != 0)                                                                            /* check result */
- 496:	88 23       	and	r24, r24
- 498:	a9 f0       	breq	.+42     	; 0x4c4 <__LOCK_REGION_LENGTH__+0xc4>
-    {
-        handle->debug_print("ds3231: read status failed.\n");                                /* read status failed */
- 49a:	8c eb       	ldi	r24, 0xBC	; 188
- 49c:	94 e0       	ldi	r25, 0x04	; 4
- 49e:	9f 93       	push	r25
- 4a0:	8f 93       	push	r24
- 4a2:	d8 01       	movw	r26, r16
- 4a4:	18 96       	adiw	r26, 0x08	; 8
- 4a6:	ed 91       	ld	r30, X+
- 4a8:	fc 91       	ld	r31, X
- 4aa:	19 97       	sbiw	r26, 0x09	; 9
- 4ac:	09 95       	icall
-        (void)handle->iic_deinit();                                                          /* iic deinit */
- 4ae:	d8 01       	movw	r26, r16
- 4b0:	12 96       	adiw	r26, 0x02	; 2
- 4b2:	ed 91       	ld	r30, X+
- 4b4:	fc 91       	ld	r31, X
- 4b6:	13 97       	sbiw	r26, 0x03	; 3
- 4b8:	09 95       	icall
-        
-        return 1;                                                                            /* return error */
- 4ba:	0f 90       	pop	r0
- 4bc:	0f 90       	pop	r0
- 4be:	ff 24       	eor	r15, r15
- 4c0:	f3 94       	inc	r15
- 4c2:	29 c0       	rjmp	.+82     	; 0x516 <__LOCK_REGION_LENGTH__+0x116>
-    }
-    prev &= ~(1 << 7);                                                                       /* clear config */
- 4c4:	49 81       	ldd	r20, Y+1	; 0x01
- 4c6:	4f 77       	andi	r20, 0x7F	; 127
- 4c8:	49 83       	std	Y+1, r20	; 0x01
-    res = a_ds3231_iic_write(handle, DS3231_REG_STATUS, prev);                               /* write status */
- 4ca:	6f e0       	ldi	r22, 0x0F	; 15
- 4cc:	c8 01       	movw	r24, r16
- 4ce:	e8 dd       	rcall	.-1072   	; 0xa0 <a_ds3231_iic_write>
-    if (res != 0)                                                                            /* check result */
- 4d0:	88 23       	and	r24, r24
- 4d2:	a9 f0       	breq	.+42     	; 0x4fe <__LOCK_REGION_LENGTH__+0xfe>
-    {
-        handle->debug_print("ds3231: write status failed.\n");                               /* write status failed */
- 4d4:	84 e1       	ldi	r24, 0x14	; 20
- 4d6:	96 e0       	ldi	r25, 0x06	; 6
- 4d8:	9f 93       	push	r25
- 4da:	8f 93       	push	r24
- 4dc:	d8 01       	movw	r26, r16
- 4de:	18 96       	adiw	r26, 0x08	; 8
- 4e0:	ed 91       	ld	r30, X+
- 4e2:	fc 91       	ld	r31, X
- 4e4:	19 97       	sbiw	r26, 0x09	; 9
- 4e6:	09 95       	icall
-        (void)handle->iic_deinit();                                                          /* iic deinit */
- 4e8:	d8 01       	movw	r26, r16
- 4ea:	12 96       	adiw	r26, 0x02	; 2
- 4ec:	ed 91       	ld	r30, X+
- 4ee:	fc 91       	ld	r31, X
- 4f0:	13 97       	sbiw	r26, 0x03	; 3
- 4f2:	09 95       	icall
-        
-        return 1;                                                                            /* return error */
- 4f4:	0f 90       	pop	r0
- 4f6:	0f 90       	pop	r0
- 4f8:	ff 24       	eor	r15, r15
- 4fa:	f3 94       	inc	r15
- 4fc:	0c c0       	rjmp	.+24     	; 0x516 <__LOCK_REGION_LENGTH__+0x116>
-    }
-    handle->inited = 1;                                                                      /* flag finish initialization */
- 4fe:	81 e0       	ldi	r24, 0x01	; 1
- 500:	f8 01       	movw	r30, r16
- 502:	86 87       	std	Z+14, r24	; 0x0e
-    
-    return 0;                                                                                /* success return 0 */
- 504:	08 c0       	rjmp	.+16     	; 0x516 <__LOCK_REGION_LENGTH__+0x116>
-    uint8_t res;
-    uint8_t prev;
-    
-    if (handle == NULL)                                                                      /* check handle */
-    {
-        return 2;                                                                            /* return error */
- 506:	68 94       	set
- 508:	ff 24       	eor	r15, r15
- 50a:	f1 f8       	bld	r15, 1
- 50c:	04 c0       	rjmp	.+8      	; 0x516 <__LOCK_REGION_LENGTH__+0x116>
-    }
-    if (handle->debug_print == NULL)                                                         /* check debug_print */
-    {
-        return 3;                                                                            /* return error */
- 50e:	0f 2e       	mov	r0, r31
- 510:	f3 e0       	ldi	r31, 0x03	; 3
- 512:	ff 2e       	mov	r15, r31
- 514:	f0 2d       	mov	r31, r0
-        return 1;                                                                            /* return error */
-    }
-    handle->inited = 1;                                                                      /* flag finish initialization */
-    
-    return 0;                                                                                /* success return 0 */
-}
- 516:	8f 2d       	mov	r24, r15
- 518:	0f 90       	pop	r0
- 51a:	df 91       	pop	r29
- 51c:	cf 91       	pop	r28
- 51e:	1f 91       	pop	r17
- 520:	0f 91       	pop	r16
- 522:	ff 90       	pop	r15
- 524:	08 95       	ret
-
-00000526 <ds3231_deinit>:
- *            - 2 handle is NULL
- *            - 3 handle is not initialized
- * @note      none
- */
-uint8_t ds3231_deinit(ds3231_handle_t *handle)
-{
- 526:	1f 93       	push	r17
- 528:	cf 93       	push	r28
- 52a:	df 93       	push	r29
-    if (handle == NULL)                                             /* check handle */
- 52c:	00 97       	sbiw	r24, 0x00	; 0
- 52e:	c1 f0       	breq	.+48     	; 0x560 <ds3231_deinit+0x3a>
-    {
-        return 2;                                                   /* return error */
-    }
-    if (handle->inited != 1)                                        /* check handle initialization */
- 530:	fc 01       	movw	r30, r24
- 532:	16 85       	ldd	r17, Z+14	; 0x0e
- 534:	11 30       	cpi	r17, 0x01	; 1
- 536:	b1 f4       	brne	.+44     	; 0x564 <ds3231_deinit+0x3e>
- 538:	ec 01       	movw	r28, r24
-    {
-        return 3;                                                   /* return error */
-    }
-    
-    if (handle->iic_deinit() != 0)                                  /* iic deinit */
- 53a:	02 80       	ldd	r0, Z+2	; 0x02
- 53c:	f3 81       	ldd	r31, Z+3	; 0x03
- 53e:	e0 2d       	mov	r30, r0
- 540:	09 95       	icall
- 542:	88 23       	and	r24, r24
- 544:	59 f0       	breq	.+22     	; 0x55c <ds3231_deinit+0x36>
-    {
-        handle->debug_print("ds3231: iic deinit failed.\n");        /* iic deinit failed */
- 546:	82 e3       	ldi	r24, 0x32	; 50
- 548:	96 e0       	ldi	r25, 0x06	; 6
- 54a:	9f 93       	push	r25
- 54c:	8f 93       	push	r24
- 54e:	e8 85       	ldd	r30, Y+8	; 0x08
- 550:	f9 85       	ldd	r31, Y+9	; 0x09
- 552:	09 95       	icall
-       
-        return 1;                                                   /* return error */
- 554:	0f 90       	pop	r0
- 556:	0f 90       	pop	r0
- 558:	81 2f       	mov	r24, r17
- 55a:	05 c0       	rjmp	.+10     	; 0x566 <ds3231_deinit+0x40>
-    }
-    handle->inited = 0;                                             /* flag close */
- 55c:	1e 86       	std	Y+14, r1	; 0x0e
-    
-    return 0;                                                       /* success return 0 */
- 55e:	03 c0       	rjmp	.+6      	; 0x566 <ds3231_deinit+0x40>
- */
-uint8_t ds3231_deinit(ds3231_handle_t *handle)
-{
-    if (handle == NULL)                                             /* check handle */
-    {
-        return 2;                                                   /* return error */
- 560:	82 e0       	ldi	r24, 0x02	; 2
- 562:	01 c0       	rjmp	.+2      	; 0x566 <ds3231_deinit+0x40>
-    }
-    if (handle->inited != 1)                                        /* check handle initialization */
-    {
-        return 3;                                                   /* return error */
- 564:	83 e0       	ldi	r24, 0x03	; 3
-        return 1;                                                   /* return error */
-    }
-    handle->inited = 0;                                             /* flag close */
-    
-    return 0;                                                       /* success return 0 */
-}
- 566:	df 91       	pop	r29
- 568:	cf 91       	pop	r28
- 56a:	1f 91       	pop	r17
- 56c:	08 95       	ret
-
-0000056e <ds3231_alarm_clear>:
- *            - 2 handle is NULL
- *            - 3 handle is not initialized
- * @note      none
- */
-uint8_t ds3231_alarm_clear(ds3231_handle_t *handle, ds3231_alarm_t alarm)
-{
- 56e:	ef 92       	push	r14
- 570:	ff 92       	push	r15
- 572:	0f 93       	push	r16
- 574:	1f 93       	push	r17
- 576:	cf 93       	push	r28
- 578:	df 93       	push	r29
- 57a:	1f 92       	push	r1
- 57c:	cd b7       	in	r28, 0x3d	; 61
- 57e:	de b7       	in	r29, 0x3e	; 62
-    uint8_t res;
-    uint8_t prev;
-    
-    if (handle == NULL)                                                                      /* check handle */
- 580:	00 97       	sbiw	r24, 0x00	; 0
- 582:	c9 f1       	breq	.+114    	; 0x5f6 <ds3231_alarm_clear+0x88>
-    {
-        return 2;                                                                            /* return error */
-    }
-    if (handle->inited != 1)                                                                 /* check handle initialization */
- 584:	dc 01       	movw	r26, r24
- 586:	1e 96       	adiw	r26, 0x0e	; 14
- 588:	1c 91       	ld	r17, X
- 58a:	11 30       	cpi	r17, 0x01	; 1
- 58c:	b1 f5       	brne	.+108    	; 0x5fa <ds3231_alarm_clear+0x8c>
- 58e:	06 2f       	mov	r16, r22
- 590:	7c 01       	movw	r14, r24
-    {
-        return 3;                                                                            /* return error */
-    }
-    
-    res = a_ds3231_iic_multiple_read(handle, DS3231_REG_STATUS, (uint8_t *)&prev, 1);        /* multiple_read  */
- 592:	21 e0       	ldi	r18, 0x01	; 1
- 594:	ae 01       	movw	r20, r28
- 596:	4f 5f       	subi	r20, 0xFF	; 255
- 598:	5f 4f       	sbci	r21, 0xFF	; 255
- 59a:	6f e0       	ldi	r22, 0x0F	; 15
- 59c:	9c dd       	rcall	.-1224   	; 0xd6 <a_ds3231_iic_multiple_read>
-    if (res != 0)                                                                            /* check result */
- 59e:	88 23       	and	r24, r24
- 5a0:	69 f0       	breq	.+26     	; 0x5bc <ds3231_alarm_clear+0x4e>
-    {
-        handle->debug_print("ds3231: read status failed.\n");                                /* read status failed */
- 5a2:	8c eb       	ldi	r24, 0xBC	; 188
- 5a4:	94 e0       	ldi	r25, 0x04	; 4
- 5a6:	9f 93       	push	r25
- 5a8:	8f 93       	push	r24
- 5aa:	d7 01       	movw	r26, r14
- 5ac:	18 96       	adiw	r26, 0x08	; 8
- 5ae:	ed 91       	ld	r30, X+
- 5b0:	fc 91       	ld	r31, X
- 5b2:	19 97       	sbiw	r26, 0x09	; 9
- 5b4:	09 95       	icall
-        
-        return 1;                                                                            /* return error */
- 5b6:	0f 90       	pop	r0
- 5b8:	0f 90       	pop	r0
- 5ba:	22 c0       	rjmp	.+68     	; 0x600 <ds3231_alarm_clear+0x92>
-    }
-    prev &= ~(1 << alarm);                                                                   /* clear config */
- 5bc:	41 e0       	ldi	r20, 0x01	; 1
- 5be:	50 e0       	ldi	r21, 0x00	; 0
- 5c0:	02 c0       	rjmp	.+4      	; 0x5c6 <ds3231_alarm_clear+0x58>
- 5c2:	44 0f       	add	r20, r20
- 5c4:	55 1f       	adc	r21, r21
- 5c6:	0a 95       	dec	r16
- 5c8:	e2 f7       	brpl	.-8      	; 0x5c2 <ds3231_alarm_clear+0x54>
- 5ca:	40 95       	com	r20
- 5cc:	89 81       	ldd	r24, Y+1	; 0x01
- 5ce:	48 23       	and	r20, r24
- 5d0:	49 83       	std	Y+1, r20	; 0x01
-    res = a_ds3231_iic_write(handle, DS3231_REG_STATUS, prev);                               /* write status */
- 5d2:	6f e0       	ldi	r22, 0x0F	; 15
- 5d4:	c7 01       	movw	r24, r14
- 5d6:	64 dd       	rcall	.-1336   	; 0xa0 <a_ds3231_iic_write>
-    if (res != 0)                                                                            /* check result */
- 5d8:	88 23       	and	r24, r24
- 5da:	89 f0       	breq	.+34     	; 0x5fe <ds3231_alarm_clear+0x90>
-    {
-        handle->debug_print("ds3231: write status failed.\n");                               /* write status failed */
- 5dc:	84 e1       	ldi	r24, 0x14	; 20
- 5de:	96 e0       	ldi	r25, 0x06	; 6
- 5e0:	9f 93       	push	r25
- 5e2:	8f 93       	push	r24
- 5e4:	d7 01       	movw	r26, r14
- 5e6:	18 96       	adiw	r26, 0x08	; 8
- 5e8:	ed 91       	ld	r30, X+
- 5ea:	fc 91       	ld	r31, X
- 5ec:	19 97       	sbiw	r26, 0x09	; 9
- 5ee:	09 95       	icall
-        
-        return 1;                                                                            /* return error */
- 5f0:	0f 90       	pop	r0
- 5f2:	0f 90       	pop	r0
- 5f4:	05 c0       	rjmp	.+10     	; 0x600 <ds3231_alarm_clear+0x92>
-    uint8_t res;
-    uint8_t prev;
-    
-    if (handle == NULL)                                                                      /* check handle */
-    {
-        return 2;                                                                            /* return error */
- 5f6:	12 e0       	ldi	r17, 0x02	; 2
- 5f8:	03 c0       	rjmp	.+6      	; 0x600 <ds3231_alarm_clear+0x92>
-    }
-    if (handle->inited != 1)                                                                 /* check handle initialization */
-    {
-        return 3;                                                                            /* return error */
- 5fa:	13 e0       	ldi	r17, 0x03	; 3
- 5fc:	01 c0       	rjmp	.+2      	; 0x600 <ds3231_alarm_clear+0x92>
-        handle->debug_print("ds3231: write status failed.\n");                               /* write status failed */
-        
-        return 1;                                                                            /* return error */
-    }
-    
-    return 0;                                                                                /* success return 0 */
- 5fe:	10 e0       	ldi	r17, 0x00	; 0
-}
- 600:	81 2f       	mov	r24, r17
- 602:	0f 90       	pop	r0
- 604:	df 91       	pop	r29
- 606:	cf 91       	pop	r28
- 608:	1f 91       	pop	r17
- 60a:	0f 91       	pop	r16
- 60c:	ff 90       	pop	r15
- 60e:	ef 90       	pop	r14
- 610:	08 95       	ret
-
-00000612 <ds3231_set_32khz_output>:
- *            - 2 handle is NULL
- *            - 3 handle is not initialized
- * @note      none
- */
-uint8_t ds3231_set_32khz_output(ds3231_handle_t *handle, ds3231_bool_t enable)
-{
- 612:	ef 92       	push	r14
- 614:	ff 92       	push	r15
- 616:	0f 93       	push	r16
- 618:	1f 93       	push	r17
- 61a:	cf 93       	push	r28
- 61c:	df 93       	push	r29
- 61e:	1f 92       	push	r1
- 620:	cd b7       	in	r28, 0x3d	; 61
- 622:	de b7       	in	r29, 0x3e	; 62
-    uint8_t res;
-    uint8_t prev;
-    
-    if (handle == NULL)                                                                      /* check handle */
- 624:	00 97       	sbiw	r24, 0x00	; 0
- 626:	b1 f1       	breq	.+108    	; 0x694 <ds3231_set_32khz_output+0x82>
-    {
-        return 2;                                                                            /* return error */
-    }
-    if (handle->inited != 1)                                                                 /* check handle initialization */
- 628:	dc 01       	movw	r26, r24
- 62a:	1e 96       	adiw	r26, 0x0e	; 14
- 62c:	1c 91       	ld	r17, X
- 62e:	11 30       	cpi	r17, 0x01	; 1
- 630:	99 f5       	brne	.+102    	; 0x698 <ds3231_set_32khz_output+0x86>
- 632:	06 2f       	mov	r16, r22
- 634:	7c 01       	movw	r14, r24
-    {
-        return 3;                                                                            /* return error */
-    }
-    
-    res = a_ds3231_iic_multiple_read(handle, DS3231_REG_STATUS, (uint8_t *)&prev, 1);        /* multiple read */
- 636:	21 e0       	ldi	r18, 0x01	; 1
- 638:	ae 01       	movw	r20, r28
- 63a:	4f 5f       	subi	r20, 0xFF	; 255
- 63c:	5f 4f       	sbci	r21, 0xFF	; 255
- 63e:	6f e0       	ldi	r22, 0x0F	; 15
- 640:	4a dd       	rcall	.-1388   	; 0xd6 <a_ds3231_iic_multiple_read>
-    if (res != 0)                                                                            /* check result */
- 642:	88 23       	and	r24, r24
- 644:	69 f0       	breq	.+26     	; 0x660 <ds3231_set_32khz_output+0x4e>
-    {
-        handle->debug_print("ds3231: read status failed.\n");                                /* read status failed */
- 646:	8c eb       	ldi	r24, 0xBC	; 188
- 648:	94 e0       	ldi	r25, 0x04	; 4
- 64a:	9f 93       	push	r25
- 64c:	8f 93       	push	r24
- 64e:	d7 01       	movw	r26, r14
- 650:	18 96       	adiw	r26, 0x08	; 8
- 652:	ed 91       	ld	r30, X+
- 654:	fc 91       	ld	r31, X
- 656:	19 97       	sbiw	r26, 0x09	; 9
- 658:	09 95       	icall
-        
-        return 1;                                                                            /* return error */
- 65a:	0f 90       	pop	r0
- 65c:	0f 90       	pop	r0
- 65e:	1f c0       	rjmp	.+62     	; 0x69e <ds3231_set_32khz_output+0x8c>
-    }
-    prev &= ~(1 << 3);                                                                       /* clear config */
-    prev |= enable << 3;                                                                     /* set enable */
- 660:	49 81       	ldd	r20, Y+1	; 0x01
- 662:	47 7f       	andi	r20, 0xF7	; 247
- 664:	60 2f       	mov	r22, r16
- 666:	66 0f       	add	r22, r22
- 668:	66 0f       	add	r22, r22
- 66a:	66 0f       	add	r22, r22
- 66c:	46 2b       	or	r20, r22
- 66e:	49 83       	std	Y+1, r20	; 0x01
-    res = a_ds3231_iic_write(handle, DS3231_REG_STATUS, prev);                               /* write status */
- 670:	6f e0       	ldi	r22, 0x0F	; 15
- 672:	c7 01       	movw	r24, r14
- 674:	15 dd       	rcall	.-1494   	; 0xa0 <a_ds3231_iic_write>
-    if (res != 0)                                                                            /* check result */
- 676:	88 23       	and	r24, r24
- 678:	89 f0       	breq	.+34     	; 0x69c <ds3231_set_32khz_output+0x8a>
-    {
-        handle->debug_print("ds3231: write status failed.\n");                               /* write status failed */
- 67a:	84 e1       	ldi	r24, 0x14	; 20
- 67c:	96 e0       	ldi	r25, 0x06	; 6
- 67e:	9f 93       	push	r25
- 680:	8f 93       	push	r24
- 682:	d7 01       	movw	r26, r14
- 684:	18 96       	adiw	r26, 0x08	; 8
- 686:	ed 91       	ld	r30, X+
- 688:	fc 91       	ld	r31, X
- 68a:	19 97       	sbiw	r26, 0x09	; 9
- 68c:	09 95       	icall
-        
-        return 1;                                                                            /* return error */
- 68e:	0f 90       	pop	r0
- 690:	0f 90       	pop	r0
- 692:	05 c0       	rjmp	.+10     	; 0x69e <ds3231_set_32khz_output+0x8c>
-    uint8_t res;
-    uint8_t prev;
-    
-    if (handle == NULL)                                                                      /* check handle */
-    {
-        return 2;                                                                            /* return error */
- 694:	12 e0       	ldi	r17, 0x02	; 2
- 696:	03 c0       	rjmp	.+6      	; 0x69e <ds3231_set_32khz_output+0x8c>
-    }
-    if (handle->inited != 1)                                                                 /* check handle initialization */
-    {
-        return 3;                                                                            /* return error */
- 698:	13 e0       	ldi	r17, 0x03	; 3
- 69a:	01 c0       	rjmp	.+2      	; 0x69e <ds3231_set_32khz_output+0x8c>
-        handle->debug_print("ds3231: write status failed.\n");                               /* write status failed */
-        
-        return 1;                                                                            /* return error */
-    }
-    
-    return 0;                                                                                /* success return 0 */
- 69c:	10 e0       	ldi	r17, 0x00	; 0
-}
- 69e:	81 2f       	mov	r24, r17
- 6a0:	0f 90       	pop	r0
- 6a2:	df 91       	pop	r29
- 6a4:	cf 91       	pop	r28
- 6a6:	1f 91       	pop	r17
- 6a8:	0f 91       	pop	r16
- 6aa:	ff 90       	pop	r15
- 6ac:	ef 90       	pop	r14
- 6ae:	08 95       	ret
-
-000006b0 <ds3231_alarm_init>:
-    }
-    else
-    {
-        return 0;
-    }
-}
- 6b0:	cf 93       	push	r28
- 6b2:	df 93       	push	r29
- 6b4:	1f 92       	push	r1
- 6b6:	cd b7       	in	r28, 0x3d	; 61
- 6b8:	de b7       	in	r29, 0x3e	; 62
- 6ba:	ee ec       	ldi	r30, 0xCE	; 206
- 6bc:	f7 e0       	ldi	r31, 0x07	; 7
- 6be:	2f e0       	ldi	r18, 0x0F	; 15
- 6c0:	df 01       	movw	r26, r30
- 6c2:	1d 92       	st	X+, r1
- 6c4:	2a 95       	dec	r18
- 6c6:	e9 f7       	brne	.-6      	; 0x6c2 <ds3231_alarm_init+0x12>
- 6c8:	2b e0       	ldi	r18, 0x0B	; 11
- 6ca:	34 e0       	ldi	r19, 0x04	; 4
- 6cc:	31 83       	std	Z+1, r19	; 0x01
- 6ce:	20 83       	st	Z, r18
- 6d0:	22 e1       	ldi	r18, 0x12	; 18
- 6d2:	34 e0       	ldi	r19, 0x04	; 4
- 6d4:	33 83       	std	Z+3, r19	; 0x03
- 6d6:	22 83       	std	Z+2, r18	; 0x02
- 6d8:	24 e1       	ldi	r18, 0x14	; 20
- 6da:	34 e0       	ldi	r19, 0x04	; 4
- 6dc:	37 83       	std	Z+7, r19	; 0x07
- 6de:	26 83       	std	Z+6, r18	; 0x06
- 6e0:	29 e4       	ldi	r18, 0x49	; 73
- 6e2:	34 e0       	ldi	r19, 0x04	; 4
- 6e4:	35 83       	std	Z+5, r19	; 0x05
- 6e6:	24 83       	std	Z+4, r18	; 0x04
- 6e8:	29 e5       	ldi	r18, 0x59	; 89
- 6ea:	34 e0       	ldi	r19, 0x04	; 4
- 6ec:	35 87       	std	Z+13, r19	; 0x0d
- 6ee:	24 87       	std	Z+12, r18	; 0x0c
- 6f0:	2a e5       	ldi	r18, 0x5A	; 90
- 6f2:	34 e0       	ldi	r19, 0x04	; 4
- 6f4:	31 87       	std	Z+9, r19	; 0x09
- 6f6:	20 87       	std	Z+8, r18	; 0x08
- 6f8:	93 87       	std	Z+11, r25	; 0x0b
- 6fa:	82 87       	std	Z+10, r24	; 0x0a
- 6fc:	cf 01       	movw	r24, r30
- 6fe:	27 de       	rcall	.-946    	; 0x34e <ds3231_init>
- 700:	88 23       	and	r24, r24
- 702:	49 f0       	breq	.+18     	; 0x716 <ds3231_alarm_init+0x66>
- 704:	8b e7       	ldi	r24, 0x7B	; 123
- 706:	96 e0       	ldi	r25, 0x06	; 6
- 708:	9f 93       	push	r25
- 70a:	8f 93       	push	r24
- 70c:	d3 d0       	rcall	.+422    	; 0x8b4 <ds3231_interface_debug_print>
- 70e:	0f 90       	pop	r0
- 710:	0f 90       	pop	r0
- 712:	81 e0       	ldi	r24, 0x01	; 1
- 714:	72 c0       	rjmp	.+228    	; 0x7fa <ds3231_alarm_init+0x14a>
- 716:	61 e0       	ldi	r22, 0x01	; 1
- 718:	8e ec       	ldi	r24, 0xCE	; 206
- 71a:	97 e0       	ldi	r25, 0x07	; 7
- 71c:	ea dc       	rcall	.-1580   	; 0xf2 <ds3231_set_oscillator>
- 71e:	88 23       	and	r24, r24
- 720:	61 f0       	breq	.+24     	; 0x73a <ds3231_alarm_init+0x8a>
- 722:	81 e9       	ldi	r24, 0x91	; 145
- 724:	96 e0       	ldi	r25, 0x06	; 6
- 726:	9f 93       	push	r25
- 728:	8f 93       	push	r24
- 72a:	c4 d0       	rcall	.+392    	; 0x8b4 <ds3231_interface_debug_print>
- 72c:	8e ec       	ldi	r24, 0xCE	; 206
- 72e:	97 e0       	ldi	r25, 0x07	; 7
- 730:	fa de       	rcall	.-524    	; 0x526 <ds3231_deinit>
- 732:	0f 90       	pop	r0
- 734:	0f 90       	pop	r0
- 736:	81 e0       	ldi	r24, 0x01	; 1
- 738:	60 c0       	rjmp	.+192    	; 0x7fa <ds3231_alarm_init+0x14a>
- 73a:	61 e0       	ldi	r22, 0x01	; 1
- 73c:	8e ec       	ldi	r24, 0xCE	; 206
- 73e:	97 e0       	ldi	r25, 0x07	; 7
- 740:	28 dd       	rcall	.-1456   	; 0x192 <ds3231_set_pin>
- 742:	88 23       	and	r24, r24
- 744:	61 f0       	breq	.+24     	; 0x75e <ds3231_alarm_init+0xae>
- 746:	81 eb       	ldi	r24, 0xB1	; 177
- 748:	96 e0       	ldi	r25, 0x06	; 6
- 74a:	9f 93       	push	r25
- 74c:	8f 93       	push	r24
- 74e:	b2 d0       	rcall	.+356    	; 0x8b4 <ds3231_interface_debug_print>
- 750:	8e ec       	ldi	r24, 0xCE	; 206
- 752:	97 e0       	ldi	r25, 0x07	; 7
- 754:	e8 de       	rcall	.-560    	; 0x526 <ds3231_deinit>
- 756:	0f 90       	pop	r0
- 758:	0f 90       	pop	r0
- 75a:	81 e0       	ldi	r24, 0x01	; 1
- 75c:	4e c0       	rjmp	.+156    	; 0x7fa <ds3231_alarm_init+0x14a>
- 75e:	60 e0       	ldi	r22, 0x00	; 0
- 760:	8e ec       	ldi	r24, 0xCE	; 206
- 762:	97 e0       	ldi	r25, 0x07	; 7
- 764:	64 dd       	rcall	.-1336   	; 0x22e <ds3231_set_square_wave>
- 766:	88 23       	and	r24, r24
- 768:	61 f0       	breq	.+24     	; 0x782 <ds3231_alarm_init+0xd2>
- 76a:	8a ec       	ldi	r24, 0xCA	; 202
- 76c:	96 e0       	ldi	r25, 0x06	; 6
- 76e:	9f 93       	push	r25
- 770:	8f 93       	push	r24
- 772:	a0 d0       	rcall	.+320    	; 0x8b4 <ds3231_interface_debug_print>
- 774:	8e ec       	ldi	r24, 0xCE	; 206
- 776:	97 e0       	ldi	r25, 0x07	; 7
- 778:	d6 de       	rcall	.-596    	; 0x526 <ds3231_deinit>
- 77a:	0f 90       	pop	r0
- 77c:	0f 90       	pop	r0
- 77e:	81 e0       	ldi	r24, 0x01	; 1
- 780:	3c c0       	rjmp	.+120    	; 0x7fa <ds3231_alarm_init+0x14a>
- 782:	60 e0       	ldi	r22, 0x00	; 0
- 784:	8e ec       	ldi	r24, 0xCE	; 206
- 786:	97 e0       	ldi	r25, 0x07	; 7
- 788:	44 df       	rcall	.-376    	; 0x612 <ds3231_set_32khz_output>
- 78a:	88 23       	and	r24, r24
- 78c:	61 f0       	breq	.+24     	; 0x7a6 <ds3231_alarm_init+0xf6>
- 78e:	8b ee       	ldi	r24, 0xEB	; 235
- 790:	96 e0       	ldi	r25, 0x06	; 6
- 792:	9f 93       	push	r25
- 794:	8f 93       	push	r24
- 796:	8e d0       	rcall	.+284    	; 0x8b4 <ds3231_interface_debug_print>
- 798:	8e ec       	ldi	r24, 0xCE	; 206
- 79a:	97 e0       	ldi	r25, 0x07	; 7
- 79c:	c4 de       	rcall	.-632    	; 0x526 <ds3231_deinit>
- 79e:	0f 90       	pop	r0
- 7a0:	0f 90       	pop	r0
- 7a2:	81 e0       	ldi	r24, 0x01	; 1
- 7a4:	2a c0       	rjmp	.+84     	; 0x7fa <ds3231_alarm_init+0x14a>
- 7a6:	9e 01       	movw	r18, r28
- 7a8:	2f 5f       	subi	r18, 0xFF	; 255
- 7aa:	3f 4f       	sbci	r19, 0xFF	; 255
- 7ac:	40 e0       	ldi	r20, 0x00	; 0
- 7ae:	50 e0       	ldi	r21, 0x00	; 0
- 7b0:	ba 01       	movw	r22, r20
- 7b2:	8e ec       	ldi	r24, 0xCE	; 206
- 7b4:	97 e0       	ldi	r25, 0x07	; 7
- 7b6:	b1 dd       	rcall	.-1182   	; 0x31a <ds3231_aging_offset_convert_to_register>
- 7b8:	88 23       	and	r24, r24
- 7ba:	61 f0       	breq	.+24     	; 0x7d4 <ds3231_alarm_init+0x124>
- 7bc:	8d e0       	ldi	r24, 0x0D	; 13
- 7be:	97 e0       	ldi	r25, 0x07	; 7
- 7c0:	9f 93       	push	r25
- 7c2:	8f 93       	push	r24
- 7c4:	77 d0       	rcall	.+238    	; 0x8b4 <ds3231_interface_debug_print>
- 7c6:	8e ec       	ldi	r24, 0xCE	; 206
- 7c8:	97 e0       	ldi	r25, 0x07	; 7
- 7ca:	ad de       	rcall	.-678    	; 0x526 <ds3231_deinit>
- 7cc:	0f 90       	pop	r0
- 7ce:	0f 90       	pop	r0
- 7d0:	81 e0       	ldi	r24, 0x01	; 1
- 7d2:	13 c0       	rjmp	.+38     	; 0x7fa <ds3231_alarm_init+0x14a>
- 7d4:	69 81       	ldd	r22, Y+1	; 0x01
- 7d6:	8e ec       	ldi	r24, 0xCE	; 206
- 7d8:	97 e0       	ldi	r25, 0x07	; 7
- 7da:	78 dd       	rcall	.-1296   	; 0x2cc <ds3231_set_aging_offset>
- 7dc:	88 23       	and	r24, r24
- 7de:	61 f0       	breq	.+24     	; 0x7f8 <ds3231_alarm_init+0x148>
- 7e0:	82 e3       	ldi	r24, 0x32	; 50
- 7e2:	97 e0       	ldi	r25, 0x07	; 7
- 7e4:	9f 93       	push	r25
- 7e6:	8f 93       	push	r24
- 7e8:	65 d0       	rcall	.+202    	; 0x8b4 <ds3231_interface_debug_print>
- 7ea:	8e ec       	ldi	r24, 0xCE	; 206
- 7ec:	97 e0       	ldi	r25, 0x07	; 7
- 7ee:	9b de       	rcall	.-714    	; 0x526 <ds3231_deinit>
- 7f0:	0f 90       	pop	r0
- 7f2:	0f 90       	pop	r0
- 7f4:	81 e0       	ldi	r24, 0x01	; 1
- 7f6:	01 c0       	rjmp	.+2      	; 0x7fa <ds3231_alarm_init+0x14a>
- 7f8:	80 e0       	ldi	r24, 0x00	; 0
- 7fa:	0f 90       	pop	r0
- 7fc:	df 91       	pop	r29
- 7fe:	cf 91       	pop	r28
- 800:	08 95       	ret
-
-00000802 <ds3231_alarm_clear_flag>:
- * @note      none
- */
-uint8_t ds3231_alarm_clear_flag(ds3231_alarm_t alarm)
-{
-    /* alarm clear */
-    if (ds3231_alarm_clear(&gs_handle, alarm) != 0)
- 802:	68 2f       	mov	r22, r24
- 804:	8e ec       	ldi	r24, 0xCE	; 206
- 806:	97 e0       	ldi	r25, 0x07	; 7
- 808:	b2 de       	rcall	.-668    	; 0x56e <ds3231_alarm_clear>
- 80a:	91 e0       	ldi	r25, 0x01	; 1
- 80c:	81 11       	cpse	r24, r1
- 80e:	01 c0       	rjmp	.+2      	; 0x812 <ds3231_alarm_clear_flag+0x10>
- 810:	90 e0       	ldi	r25, 0x00	; 0
-    }
-    else
-    {
-        return 0;
-    }
-}
- 812:	89 2f       	mov	r24, r25
- 814:	08 95       	ret
-
-00000816 <ds3231_interface_iic_init>:
- * @note   none
- */
-uint8_t ds3231_interface_iic_init(void)
-{
-	/* initialize TWI clock: 100 kHz clock, TWPS = 0 => prescaler = 1 */
-	TWSR = 0;                         /* no prescaler */
- 816:	10 92 b9 00 	sts	0x00B9, r1	; 0x8000b9 <__TEXT_REGION_LENGTH__+0x7e00b9>
-	TWBR = ((F_CPU/SCL_CLOCK)-16)/2;  /* must be > 10 for stable operation */
- 81a:	88 e4       	ldi	r24, 0x48	; 72
- 81c:	80 93 b8 00 	sts	0x00B8, r24	; 0x8000b8 <__TEXT_REGION_LENGTH__+0x7e00b8>
-
-    return 0;
-}
- 820:	80 e0       	ldi	r24, 0x00	; 0
- 822:	08 95       	ret
-
-00000824 <ds3231_interface_iic_deinit>:
- */
-uint8_t ds3231_interface_iic_deinit(void)
-{
-	
-    return 0;
-}
- 824:	80 e0       	ldi	r24, 0x00	; 0
- 826:	08 95       	ret
-
-00000828 <ds3231_interface_iic_read>:
- *             - 0 success
- *             - 1 read failed
- * @note       none
- */
-uint8_t ds3231_interface_iic_read(uint8_t addr, uint8_t reg, uint8_t *buf, uint16_t len)
-{
- 828:	af 92       	push	r10
- 82a:	bf 92       	push	r11
- 82c:	cf 92       	push	r12
- 82e:	df 92       	push	r13
- 830:	ef 92       	push	r14
- 832:	ff 92       	push	r15
- 834:	0f 93       	push	r16
- 836:	1f 93       	push	r17
- 838:	cf 93       	push	r28
- 83a:	df 93       	push	r29
-	for (uint8_t i = 0; i < len; i++)
- 83c:	21 15       	cp	r18, r1
- 83e:	31 05       	cpc	r19, r1
- 840:	e1 f0       	breq	.+56     	; 0x87a <ds3231_interface_iic_read+0x52>
- 842:	79 01       	movw	r14, r18
- 844:	6a 01       	movw	r12, r20
- 846:	b6 2e       	mov	r11, r22
-	{
-		i2c_rep_start((addr<<1)+I2C_WRITE);
- 848:	08 2f       	mov	r16, r24
- 84a:	00 0f       	add	r16, r16
-		i2c_write(reg);
-		/* Send START condition with SLA+R */
-		i2c_rep_start((addr<<1)+I2C_READ);
- 84c:	aa 24       	eor	r10, r10
- 84e:	a3 94       	inc	r10
- 850:	a0 0e       	add	r10, r16
- 852:	16 2f       	mov	r17, r22
- 854:	c0 e0       	ldi	r28, 0x00	; 0
- 856:	d0 e0       	ldi	r29, 0x00	; 0
- */
-uint8_t ds3231_interface_iic_read(uint8_t addr, uint8_t reg, uint8_t *buf, uint16_t len)
-{
-	for (uint8_t i = 0; i < len; i++)
-	{
-		i2c_rep_start((addr<<1)+I2C_WRITE);
- 858:	80 2f       	mov	r24, r16
- 85a:	5a d0       	rcall	.+180    	; 0x910 <i2c_rep_start>
-		i2c_write(reg);
- 85c:	81 2f       	mov	r24, r17
- 85e:	5a d0       	rcall	.+180    	; 0x914 <i2c_write>
-		/* Send START condition with SLA+R */
-		i2c_rep_start((addr<<1)+I2C_READ);
- 860:	8a 2d       	mov	r24, r10
- 862:	56 d0       	rcall	.+172    	; 0x910 <i2c_rep_start>
-		/* Receive data */
-		buf[i] = i2c_readNak();
- 864:	cc 0d       	add	r28, r12
- 866:	dd 1d       	adc	r29, r13
- 868:	67 d0       	rcall	.+206    	; 0x938 <i2c_readNak>
- 86a:	88 83       	st	Y, r24
- 86c:	1f 5f       	subi	r17, 0xFF	; 255
-		reg += 1;
- 86e:	c1 2f       	mov	r28, r17
- *             - 1 read failed
- * @note       none
- */
-uint8_t ds3231_interface_iic_read(uint8_t addr, uint8_t reg, uint8_t *buf, uint16_t len)
-{
-	for (uint8_t i = 0; i < len; i++)
- 870:	cb 19       	sub	r28, r11
- 872:	d0 e0       	ldi	r29, 0x00	; 0
- 874:	ce 15       	cp	r28, r14
- 876:	df 05       	cpc	r29, r15
- 878:	78 f3       	brcs	.-34     	; 0x858 <ds3231_interface_iic_read+0x30>
- 87a:	80 e0       	ldi	r24, 0x00	; 0
-		/* Receive data */
-		buf[i] = i2c_readNak();
-		reg += 1;
-	}
-    return 0;
-}
- 87c:	df 91       	pop	r29
- 87e:	cf 91       	pop	r28
- 880:	1f 91       	pop	r17
- 882:	0f 91       	pop	r16
- 884:	ff 90       	pop	r15
- 886:	ef 90       	pop	r14
- 888:	df 90       	pop	r13
- 88a:	cf 90       	pop	r12
- 88c:	bf 90       	pop	r11
- 88e:	af 90       	pop	r10
- 890:	08 95       	ret
-
-00000892 <ds3231_interface_iic_write>:
- 892:	1f 93       	push	r17
- *            - 0 success
- *            - 1 write failed
- * @note      none
- */
-uint8_t ds3231_interface_iic_write(uint8_t addr, uint8_t reg, uint8_t *buf, uint16_t len)
-{
- 894:	cf 93       	push	r28
- 896:	df 93       	push	r29
- 898:	16 2f       	mov	r17, r22
- 89a:	ea 01       	movw	r28, r20
-	i2c_rep_start((addr<<1)+I2C_WRITE);
- 89c:	88 0f       	add	r24, r24
- 89e:	38 d0       	rcall	.+112    	; 0x910 <i2c_rep_start>
-	i2c_write(reg);
- 8a0:	81 2f       	mov	r24, r17
- 8a2:	38 d0       	rcall	.+112    	; 0x914 <i2c_write>
-	/* Write data */
-	i2c_write(*buf);
- 8a4:	88 81       	ld	r24, Y
- 8a6:	36 d0       	rcall	.+108    	; 0x914 <i2c_write>
- 8a8:	80 e0       	ldi	r24, 0x00	; 0
-	
-    return 0;
-}
- 8aa:	df 91       	pop	r29
- 8ac:	cf 91       	pop	r28
- 8ae:	1f 91       	pop	r17
- 8b0:	08 95       	ret
-
-000008b2 <ds3231_interface_delay_ms>:
- 8b2:	08 95       	ret
-
-000008b4 <ds3231_interface_debug_print>:
- * @brief     interface print format data
- * @param[in] fmt is the format data
- * @note      none
- */
-void ds3231_interface_debug_print(const char *const fmt, ...)
-{
- 8b4:	cf 93       	push	r28
- 8b6:	df 93       	push	r29
- 8b8:	cd b7       	in	r28, 0x3d	; 61
- 8ba:	de b7       	in	r29, 0x3e	; 62
-    
-}
- 8bc:	df 91       	pop	r29
- 8be:	cf 91       	pop	r28
- 8c0:	08 95       	ret
-
-000008c2 <i2c_start>:
-		if( twst == TW_SR_DATA_ACK)
-		{
-			return TWDR;
-		}
-	}
-}
- 8c2:	94 ea       	ldi	r25, 0xA4	; 164
- 8c4:	90 93 bc 00 	sts	0x00BC, r25	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7e00bc>
- 8c8:	ec eb       	ldi	r30, 0xBC	; 188
- 8ca:	f0 e0       	ldi	r31, 0x00	; 0
- 8cc:	90 81       	ld	r25, Z
- 8ce:	99 23       	and	r25, r25
- 8d0:	ec f7       	brge	.-6      	; 0x8cc <i2c_start+0xa>
- 8d2:	90 91 b9 00 	lds	r25, 0x00B9	; 0x8000b9 <__TEXT_REGION_LENGTH__+0x7e00b9>
- 8d6:	98 7f       	andi	r25, 0xF8	; 248
- 8d8:	98 30       	cpi	r25, 0x08	; 8
- 8da:	11 f0       	breq	.+4      	; 0x8e0 <i2c_start+0x1e>
- 8dc:	90 31       	cpi	r25, 0x10	; 16
- 8de:	a1 f4       	brne	.+40     	; 0x908 <__stack+0x9>
- 8e0:	80 93 bb 00 	sts	0x00BB, r24	; 0x8000bb <__TEXT_REGION_LENGTH__+0x7e00bb>
- 8e4:	84 e8       	ldi	r24, 0x84	; 132
- 8e6:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7e00bc>
- 8ea:	ec eb       	ldi	r30, 0xBC	; 188
- 8ec:	f0 e0       	ldi	r31, 0x00	; 0
- 8ee:	80 81       	ld	r24, Z
- 8f0:	88 23       	and	r24, r24
- 8f2:	ec f7       	brge	.-6      	; 0x8ee <i2c_start+0x2c>
- 8f4:	90 91 b9 00 	lds	r25, 0x00B9	; 0x8000b9 <__TEXT_REGION_LENGTH__+0x7e00b9>
- 8f8:	98 7f       	andi	r25, 0xF8	; 248
- 8fa:	98 31       	cpi	r25, 0x18	; 24
- 8fc:	39 f0       	breq	.+14     	; 0x90c <__stack+0xd>
- 8fe:	81 e0       	ldi	r24, 0x01	; 1
- 900:	90 34       	cpi	r25, 0x40	; 64
- 902:	29 f4       	brne	.+10     	; 0x90e <__stack+0xf>
- 904:	80 e0       	ldi	r24, 0x00	; 0
- 906:	08 95       	ret
- 908:	81 e0       	ldi	r24, 0x01	; 1
- 90a:	08 95       	ret
- 90c:	80 e0       	ldi	r24, 0x00	; 0
- 90e:	08 95       	ret
-
-00000910 <i2c_rep_start>:
- 910:	d8 cf       	rjmp	.-80     	; 0x8c2 <i2c_start>
- 912:	08 95       	ret
-
-00000914 <i2c_write>:
- 914:	80 93 bb 00 	sts	0x00BB, r24	; 0x8000bb <__TEXT_REGION_LENGTH__+0x7e00bb>
- 918:	84 e8       	ldi	r24, 0x84	; 132
- 91a:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7e00bc>
- 91e:	ec eb       	ldi	r30, 0xBC	; 188
- 920:	f0 e0       	ldi	r31, 0x00	; 0
- 922:	80 81       	ld	r24, Z
- 924:	88 23       	and	r24, r24
- 926:	ec f7       	brge	.-6      	; 0x922 <i2c_write+0xe>
- 928:	90 91 b9 00 	lds	r25, 0x00B9	; 0x8000b9 <__TEXT_REGION_LENGTH__+0x7e00b9>
- 92c:	98 7f       	andi	r25, 0xF8	; 248
- 92e:	81 e0       	ldi	r24, 0x01	; 1
- 930:	98 32       	cpi	r25, 0x28	; 40
- 932:	09 f4       	brne	.+2      	; 0x936 <i2c_write+0x22>
- 934:	80 e0       	ldi	r24, 0x00	; 0
- 936:	08 95       	ret
-
-00000938 <i2c_readNak>:
-Outputs:	Data received from I2C device
-Description:Receives and returns the data from I2C device.
-******************************************************************** */
-unsigned char i2c_readNak(void)
-{
-	TWCR = (1<<TWINT) | (1<<TWEN);
- 938:	84 e8       	ldi	r24, 0x84	; 132
- 93a:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7e00bc>
-	while(!(TWCR & (1<<TWINT)));
- 93e:	ec eb       	ldi	r30, 0xBC	; 188
- 940:	f0 e0       	ldi	r31, 0x00	; 0
- 942:	80 81       	ld	r24, Z
- 944:	88 23       	and	r24, r24
- 946:	ec f7       	brge	.-6      	; 0x942 <i2c_readNak+0xa>
-	
-	return TWDR;
- 948:	80 91 bb 00 	lds	r24, 0x00BB	; 0x8000bb <__TEXT_REGION_LENGTH__+0x7e00bb>
-}
- 94c:	08 95       	ret
-
-0000094e <configLCDPorts>:
+000000a0 <configLCDPorts>:
     set_RW_LOW_write;					// Write to LCD module (RW low)
     set_RS_HIGH_Data;					// Select the Data Register (RS high)
     disable_E_Pin;						// Make sure E is initially low
     lcd_write_4(theChar);				// Write the upper 4-bits of the data
     lcd_write_4(theChar << 4);			// Write the lower 4-bits of the data
 }
- 94e:	8a b1       	in	r24, 0x0a	; 10
- 950:	80 6f       	ori	r24, 0xF0	; 240
- 952:	8a b9       	out	0x0a, r24	; 10
- 954:	8a b1       	in	r24, 0x0a	; 10
- 956:	8b 60       	ori	r24, 0x0B	; 11
- 958:	8a b9       	out	0x0a, r24	; 10
- 95a:	20 9a       	sbi	0x04, 0	; 4
- 95c:	08 95       	ret
+  a0:	8a b1       	in	r24, 0x0a	; 10
+  a2:	80 6f       	ori	r24, 0xF0	; 240
+  a4:	8a b9       	out	0x0a, r24	; 10
+  a6:	8a b1       	in	r24, 0x0a	; 10
+  a8:	8b 60       	ori	r24, 0x0B	; 11
+  aa:	8a b9       	out	0x0a, r24	; 10
+  ac:	20 9a       	sbi	0x04, 0	; 4
+  ae:	08 95       	ret
 
-0000095e <lcd_write_4>:
- 95e:	cf 93       	push	r28
- 960:	df 93       	push	r29
- 962:	00 d0       	rcall	.+0      	; 0x964 <lcd_write_4+0x6>
- 964:	00 d0       	rcall	.+0      	; 0x966 <lcd_write_4+0x8>
- 966:	cd b7       	in	r28, 0x3d	; 61
- 968:	de b7       	in	r29, 0x3e	; 62
- 96a:	19 82       	std	Y+1, r1	; 0x01
- 96c:	1a 82       	std	Y+2, r1	; 0x02
- 96e:	1b 82       	std	Y+3, r1	; 0x03
- 970:	1c 82       	std	Y+4, r1	; 0x04
- 972:	fe 01       	movw	r30, r28
- 974:	31 96       	adiw	r30, 0x01	; 1
- 976:	27 e0       	ldi	r18, 0x07	; 7
- 978:	30 e0       	ldi	r19, 0x00	; 0
- 97a:	90 e0       	ldi	r25, 0x00	; 0
- 97c:	61 e0       	ldi	r22, 0x01	; 1
- 97e:	ac 01       	movw	r20, r24
- 980:	02 2e       	mov	r0, r18
- 982:	02 c0       	rjmp	.+4      	; 0x988 <lcd_write_4+0x2a>
- 984:	55 95       	asr	r21
- 986:	47 95       	ror	r20
- 988:	0a 94       	dec	r0
- 98a:	e2 f7       	brpl	.-8      	; 0x984 <lcd_write_4+0x26>
- 98c:	40 fd       	sbrc	r20, 0
- 98e:	60 83       	st	Z, r22
- 990:	21 50       	subi	r18, 0x01	; 1
- 992:	31 09       	sbc	r19, r1
- 994:	31 96       	adiw	r30, 0x01	; 1
- 996:	23 30       	cpi	r18, 0x03	; 3
- 998:	31 05       	cpc	r19, r1
- 99a:	89 f7       	brne	.-30     	; 0x97e <lcd_write_4+0x20>
- 99c:	8b b1       	in	r24, 0x0b	; 11
- 99e:	8f 70       	andi	r24, 0x0F	; 15
- 9a0:	8b b9       	out	0x0b, r24	; 11
- 9a2:	2b b1       	in	r18, 0x0b	; 11
- 9a4:	49 81       	ldd	r20, Y+1	; 0x01
- 9a6:	30 e8       	ldi	r19, 0x80	; 128
- 9a8:	43 9f       	mul	r20, r19
- 9aa:	c0 01       	movw	r24, r0
- 9ac:	11 24       	eor	r1, r1
- 9ae:	9a 81       	ldd	r25, Y+2	; 0x02
- 9b0:	30 e4       	ldi	r19, 0x40	; 64
- 9b2:	93 9f       	mul	r25, r19
- 9b4:	a0 01       	movw	r20, r0
- 9b6:	11 24       	eor	r1, r1
- 9b8:	48 2b       	or	r20, r24
- 9ba:	42 2b       	or	r20, r18
- 9bc:	9b 81       	ldd	r25, Y+3	; 0x03
- 9be:	80 e2       	ldi	r24, 0x20	; 32
- 9c0:	98 9f       	mul	r25, r24
- 9c2:	90 01       	movw	r18, r0
- 9c4:	11 24       	eor	r1, r1
- 9c6:	24 2b       	or	r18, r20
- 9c8:	9c 81       	ldd	r25, Y+4	; 0x04
- 9ca:	30 e1       	ldi	r19, 0x10	; 16
- 9cc:	93 9f       	mul	r25, r19
- 9ce:	c0 01       	movw	r24, r0
- 9d0:	11 24       	eor	r1, r1
- 9d2:	82 2b       	or	r24, r18
- 9d4:	8b b9       	out	0x0b, r24	; 11
- 9d6:	5b 9a       	sbi	0x0b, 3	; 11
- 9d8:	85 e0       	ldi	r24, 0x05	; 5
- 9da:	8a 95       	dec	r24
- 9dc:	f1 f7       	brne	.-4      	; 0x9da <lcd_write_4+0x7c>
- 9de:	00 00       	nop
- 9e0:	5b 98       	cbi	0x0b, 3	; 11
- 9e2:	35 e0       	ldi	r19, 0x05	; 5
- 9e4:	3a 95       	dec	r19
- 9e6:	f1 f7       	brne	.-4      	; 0x9e4 <lcd_write_4+0x86>
- 9e8:	00 00       	nop
- 9ea:	0f 90       	pop	r0
- 9ec:	0f 90       	pop	r0
- 9ee:	0f 90       	pop	r0
- 9f0:	0f 90       	pop	r0
- 9f2:	df 91       	pop	r29
- 9f4:	cf 91       	pop	r28
- 9f6:	08 95       	ret
+000000b0 <lcd_write_4>:
+  b0:	cf 93       	push	r28
+  b2:	df 93       	push	r29
+  b4:	00 d0       	rcall	.+0      	; 0xb6 <lcd_write_4+0x6>
+  b6:	00 d0       	rcall	.+0      	; 0xb8 <lcd_write_4+0x8>
+  b8:	cd b7       	in	r28, 0x3d	; 61
+  ba:	de b7       	in	r29, 0x3e	; 62
+  bc:	19 82       	std	Y+1, r1	; 0x01
+  be:	1a 82       	std	Y+2, r1	; 0x02
+  c0:	1b 82       	std	Y+3, r1	; 0x03
+  c2:	1c 82       	std	Y+4, r1	; 0x04
+  c4:	fe 01       	movw	r30, r28
+  c6:	31 96       	adiw	r30, 0x01	; 1
+  c8:	27 e0       	ldi	r18, 0x07	; 7
+  ca:	30 e0       	ldi	r19, 0x00	; 0
+  cc:	90 e0       	ldi	r25, 0x00	; 0
+  ce:	61 e0       	ldi	r22, 0x01	; 1
+  d0:	ac 01       	movw	r20, r24
+  d2:	02 2e       	mov	r0, r18
+  d4:	02 c0       	rjmp	.+4      	; 0xda <lcd_write_4+0x2a>
+  d6:	55 95       	asr	r21
+  d8:	47 95       	ror	r20
+  da:	0a 94       	dec	r0
+  dc:	e2 f7       	brpl	.-8      	; 0xd6 <lcd_write_4+0x26>
+  de:	40 fd       	sbrc	r20, 0
+  e0:	60 83       	st	Z, r22
+  e2:	21 50       	subi	r18, 0x01	; 1
+  e4:	31 09       	sbc	r19, r1
+  e6:	31 96       	adiw	r30, 0x01	; 1
+  e8:	23 30       	cpi	r18, 0x03	; 3
+  ea:	31 05       	cpc	r19, r1
+  ec:	89 f7       	brne	.-30     	; 0xd0 <lcd_write_4+0x20>
+  ee:	8b b1       	in	r24, 0x0b	; 11
+  f0:	8f 70       	andi	r24, 0x0F	; 15
+  f2:	8b b9       	out	0x0b, r24	; 11
+  f4:	2b b1       	in	r18, 0x0b	; 11
+  f6:	49 81       	ldd	r20, Y+1	; 0x01
+  f8:	30 e8       	ldi	r19, 0x80	; 128
+  fa:	43 9f       	mul	r20, r19
+  fc:	c0 01       	movw	r24, r0
+  fe:	11 24       	eor	r1, r1
+ 100:	9a 81       	ldd	r25, Y+2	; 0x02
+ 102:	30 e4       	ldi	r19, 0x40	; 64
+ 104:	93 9f       	mul	r25, r19
+ 106:	a0 01       	movw	r20, r0
+ 108:	11 24       	eor	r1, r1
+ 10a:	48 2b       	or	r20, r24
+ 10c:	42 2b       	or	r20, r18
+ 10e:	9b 81       	ldd	r25, Y+3	; 0x03
+ 110:	80 e2       	ldi	r24, 0x20	; 32
+ 112:	98 9f       	mul	r25, r24
+ 114:	90 01       	movw	r18, r0
+ 116:	11 24       	eor	r1, r1
+ 118:	24 2b       	or	r18, r20
+ 11a:	9c 81       	ldd	r25, Y+4	; 0x04
+ 11c:	30 e1       	ldi	r19, 0x10	; 16
+ 11e:	93 9f       	mul	r25, r19
+ 120:	c0 01       	movw	r24, r0
+ 122:	11 24       	eor	r1, r1
+ 124:	82 2b       	or	r24, r18
+ 126:	8b b9       	out	0x0b, r24	; 11
+ 128:	5b 9a       	sbi	0x0b, 3	; 11
+ 12a:	85 e0       	ldi	r24, 0x05	; 5
+ 12c:	8a 95       	dec	r24
+ 12e:	f1 f7       	brne	.-4      	; 0x12c <lcd_write_4+0x7c>
+ 130:	00 00       	nop
+ 132:	5b 98       	cbi	0x0b, 3	; 11
+ 134:	35 e0       	ldi	r19, 0x05	; 5
+ 136:	3a 95       	dec	r19
+ 138:	f1 f7       	brne	.-4      	; 0x136 <lcd_write_4+0x86>
+ 13a:	00 00       	nop
+ 13c:	0f 90       	pop	r0
+ 13e:	0f 90       	pop	r0
+ 140:	0f 90       	pop	r0
+ 142:	0f 90       	pop	r0
+ 144:	df 91       	pop	r29
+ 146:	cf 91       	pop	r28
+ 148:	08 95       	ret
 
-000009f8 <lcd_write_instruction_4f>:
+0000014a <lcd_write_instruction_4f>:
 Outputs:	none
 Description:sends a byte to the LCD instruction register, configures RW 
 			(busy flag is implemented)
 ******************************************************************** */
 void lcd_write_instruction_4f(uint8_t theInstruction)
 {
- 9f8:	cf 93       	push	r28
- 9fa:	c8 2f       	mov	r28, r24
+ 14a:	cf 93       	push	r28
+ 14c:	c8 2f       	mov	r28, r24
     set_RW_LOW_write;					// Write to LCD module (RW low)
- 9fc:	58 98       	cbi	0x0b, 0	; 11
+ 14e:	58 98       	cbi	0x0b, 0	; 11
     set_RS_LOW_Instr;					// Select the Data Register (RS high)
- 9fe:	59 98       	cbi	0x0b, 1	; 11
+ 150:	59 98       	cbi	0x0b, 1	; 11
     disable_E_Pin;						// Make sure E is initially low
- a00:	5b 98       	cbi	0x0b, 3	; 11
+ 152:	5b 98       	cbi	0x0b, 3	; 11
     lcd_write_4(theInstruction);		// Write the upper 4-bits of the data
- a02:	ad df       	rcall	.-166    	; 0x95e <lcd_write_4>
+ 154:	ad df       	rcall	.-166    	; 0xb0 <lcd_write_4>
     lcd_write_4(theInstruction << 4);	// Write the lower 4-bits of the data
- a04:	8c 2f       	mov	r24, r28
- a06:	82 95       	swap	r24
- a08:	80 7f       	andi	r24, 0xF0	; 240
- a0a:	a9 df       	rcall	.-174    	; 0x95e <lcd_write_4>
+ 156:	8c 2f       	mov	r24, r28
+ 158:	82 95       	swap	r24
+ 15a:	80 7f       	andi	r24, 0xF0	; 240
+ 15c:	a9 df       	rcall	.-174    	; 0xb0 <lcd_write_4>
 }
- a0c:	cf 91       	pop	r28
- a0e:	08 95       	ret
+ 15e:	cf 91       	pop	r28
+ 160:	08 95       	ret
 
-00000a10 <lcd_check_BF_4>:
+00000162 <lcd_check_BF_4>:
 void lcd_check_BF_4(void)
 {
 	
     uint8_t busy_flag_copy;             // busy flag 'mirror'
 
     set_D7_input;						// set D7 data direction to input
- a10:	57 98       	cbi	0x0a, 7	; 10
+ 162:	57 98       	cbi	0x0a, 7	; 10
     set_RS_LOW_Instr;					// select the Instruction Register (RS low)
- a12:	59 98       	cbi	0x0b, 1	; 11
+ 164:	59 98       	cbi	0x0b, 1	; 11
     set_RW_HIGH_read;					// read from LCD module (RW high)
- a14:	58 9a       	sbi	0x0b, 0	; 11
+ 166:	58 9a       	sbi	0x0b, 0	; 11
 
     do
     {
         busy_flag_copy = 0;                         // initialize busy flag 'mirror'
         lcd_Ctlr_Port |= (1<<lcd_E_bit);            // Enable pin high
- a16:	5b 9a       	sbi	0x0b, 3	; 11
+ 168:	5b 9a       	sbi	0x0b, 3	; 11
 	#else
 		//round up by default
 		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
 	#endif
 
 	__builtin_avr_delay_cycles(__ticks_dc);
- a18:	85 e0       	ldi	r24, 0x05	; 5
- a1a:	8a 95       	dec	r24
- a1c:	f1 f7       	brne	.-4      	; 0xa1a <lcd_check_BF_4+0xa>
- a1e:	00 00       	nop
+ 16a:	85 e0       	ldi	r24, 0x05	; 5
+ 16c:	8a 95       	dec	r24
+ 16e:	f1 f7       	brne	.-4      	; 0x16c <lcd_check_BF_4+0xa>
+ 170:	00 00       	nop
         _delay_us(1);                               // implement 'Delay data time' (160 nS) and 'Enable pulse width' (230 nS)
 
         busy_flag_copy |= (lcd_D7_pin & (1<<lcd_D7_bit));  // get actual busy flag status
- a20:	89 b1       	in	r24, 0x09	; 9
+ 172:	89 b1       	in	r24, 0x09	; 9
 
         lcd_Ctlr_Port &= ~(1<<lcd_E_bit);           // Enable pin low
- a22:	5b 98       	cbi	0x0b, 3	; 11
- a24:	95 e0       	ldi	r25, 0x05	; 5
- a26:	9a 95       	dec	r25
- a28:	f1 f7       	brne	.-4      	; 0xa26 <lcd_check_BF_4+0x16>
- a2a:	00 00       	nop
+ 174:	5b 98       	cbi	0x0b, 3	; 11
+ 176:	95 e0       	ldi	r25, 0x05	; 5
+ 178:	9a 95       	dec	r25
+ 17a:	f1 f7       	brne	.-4      	; 0x178 <lcd_check_BF_4+0x16>
+ 17c:	00 00       	nop
         _delay_us(1);                               // implement 'Address hold time' (10 nS), 'Data hold time' (10 nS), and 'Enable cycle time' (500 nS )
         
 // read and discard alternate nibbles (D3 information)
         lcd_Ctlr_Port |= (1<<lcd_E_bit);            // Enable pin high
- a2c:	5b 9a       	sbi	0x0b, 3	; 11
- a2e:	95 e0       	ldi	r25, 0x05	; 5
- a30:	9a 95       	dec	r25
- a32:	f1 f7       	brne	.-4      	; 0xa30 <lcd_check_BF_4+0x20>
- a34:	00 00       	nop
+ 17e:	5b 9a       	sbi	0x0b, 3	; 11
+ 180:	95 e0       	ldi	r25, 0x05	; 5
+ 182:	9a 95       	dec	r25
+ 184:	f1 f7       	brne	.-4      	; 0x182 <lcd_check_BF_4+0x20>
+ 186:	00 00       	nop
         _delay_us(1);                               // implement 'Delay data time' (160 nS) and 'Enable pulse width' (230 nS)
         lcd_Ctlr_Port &= ~(1<<lcd_E_bit);           // Enable pin low
- a36:	5b 98       	cbi	0x0b, 3	; 11
- a38:	95 e0       	ldi	r25, 0x05	; 5
- a3a:	9a 95       	dec	r25
- a3c:	f1 f7       	brne	.-4      	; 0xa3a <lcd_check_BF_4+0x2a>
- a3e:	00 00       	nop
+ 188:	5b 98       	cbi	0x0b, 3	; 11
+ 18a:	95 e0       	ldi	r25, 0x05	; 5
+ 18c:	9a 95       	dec	r25
+ 18e:	f1 f7       	brne	.-4      	; 0x18c <lcd_check_BF_4+0x2a>
+ 190:	00 00       	nop
         _delay_us(1);                               // implement 'Address hold time (10 nS), 'Data hold time' (10 nS), and 'Enable cycle time' (500 nS )
 
     } while (busy_flag_copy);                       // check again if busy flag was high
- a40:	88 23       	and	r24, r24
- a42:	4c f3       	brlt	.-46     	; 0xa16 <lcd_check_BF_4+0x6>
+ 192:	88 23       	and	r24, r24
+ 194:	4c f3       	brlt	.-46     	; 0x168 <lcd_check_BF_4+0x6>
 
 // arrive here if busy flag is clear -  clean up and return 
     set_RW_LOW_write;               // write to LCD module (RW low)
- a44:	58 98       	cbi	0x0b, 0	; 11
+ 196:	58 98       	cbi	0x0b, 0	; 11
     set_D7_output;                  // reset D7 data direction to output	
- a46:	57 9a       	sbi	0x0a, 7	; 10
- a48:	08 95       	ret
+ 198:	57 9a       	sbi	0x0a, 7	; 10
+ 19a:	08 95       	ret
 
-00000a4a <lcd_init_4f>:
+0000019c <lcd_init_4f>:
 	#else
 		//round up by default
 		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
 	#endif
 
 	__builtin_avr_delay_cycles(__ticks_dc);
- a4a:	2f ef       	ldi	r18, 0xFF	; 255
- a4c:	81 ee       	ldi	r24, 0xE1	; 225
- a4e:	94 e0       	ldi	r25, 0x04	; 4
- a50:	21 50       	subi	r18, 0x01	; 1
- a52:	80 40       	sbci	r24, 0x00	; 0
- a54:	90 40       	sbci	r25, 0x00	; 0
- a56:	e1 f7       	brne	.-8      	; 0xa50 <lcd_init_4f+0x6>
- a58:	00 c0       	rjmp	.+0      	; 0xa5a <lcd_init_4f+0x10>
- a5a:	00 00       	nop
+ 19c:	2f ef       	ldi	r18, 0xFF	; 255
+ 19e:	81 ee       	ldi	r24, 0xE1	; 225
+ 1a0:	94 e0       	ldi	r25, 0x04	; 4
+ 1a2:	21 50       	subi	r18, 0x01	; 1
+ 1a4:	80 40       	sbci	r24, 0x00	; 0
+ 1a6:	90 40       	sbci	r25, 0x00	; 0
+ 1a8:	e1 f7       	brne	.-8      	; 0x1a2 <lcd_init_4f+0x6>
+ 1aa:	00 c0       	rjmp	.+0      	; 0x1ac <lcd_init_4f+0x10>
+ 1ac:	00 00       	nop
 	 this instruction can be sent on just the four available data lines and it will be interpreted
 	 properly by the LCD controller.  The 'lcd_write_4' subroutine will accomplish this if the
 	 control lines have previously been configured properly. */
 
 	/* Set up the RS, E, and RW lines for the 'lcd_write_4' function. */
 	set_RS_LOW_Instr;	// Select the Instruction Register (RS low)
- a5c:	59 98       	cbi	0x0b, 1	; 11
+ 1ae:	59 98       	cbi	0x0b, 1	; 11
 	disable_E_Pin;		// Make sure E is initially low
- a5e:	5b 98       	cbi	0x0b, 3	; 11
+ 1b0:	5b 98       	cbi	0x0b, 3	; 11
 	set_RW_LOW_write;	// write to LCD module (RW low)
- a60:	58 98       	cbi	0x0b, 0	; 11
+ 1b2:	58 98       	cbi	0x0b, 0	; 11
 
 	/* Reset the LCD controller */
 	lcd_write_4(lcd_FunctionReset);		// First part of reset sequence
- a62:	80 e3       	ldi	r24, 0x30	; 48
- a64:	7c df       	rcall	.-264    	; 0x95e <lcd_write_4>
+ 1b4:	80 e3       	ldi	r24, 0x30	; 48
+ 1b6:	7c df       	rcall	.-264    	; 0xb0 <lcd_write_4>
 	#else
 		//round up by default
 		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
 	#endif
 
 	__builtin_avr_delay_cycles(__ticks_dc);
- a66:	25 e3       	ldi	r18, 0x35	; 53
- a68:	2a 95       	dec	r18
- a6a:	f1 f7       	brne	.-4      	; 0xa68 <lcd_init_4f+0x1e>
- a6c:	00 00       	nop
+ 1b8:	25 e3       	ldi	r18, 0x35	; 53
+ 1ba:	2a 95       	dec	r18
+ 1bc:	f1 f7       	brne	.-4      	; 0x1ba <lcd_init_4f+0x1e>
+ 1be:	00 00       	nop
 	_delay_us(10);                      // Delay of 10 us
 	
 	lcd_write_4(lcd_FunctionReset);		// Second part of reset sequence
- a6e:	80 e3       	ldi	r24, 0x30	; 48
- a70:	76 df       	rcall	.-276    	; 0x95e <lcd_write_4>
- a72:	8f e1       	ldi	r24, 0x1F	; 31
- a74:	93 e0       	ldi	r25, 0x03	; 3
- a76:	01 97       	sbiw	r24, 0x01	; 1
- a78:	f1 f7       	brne	.-4      	; 0xa76 <lcd_init_4f+0x2c>
- a7a:	00 c0       	rjmp	.+0      	; 0xa7c <lcd_init_4f+0x32>
+ 1c0:	80 e3       	ldi	r24, 0x30	; 48
+ 1c2:	76 df       	rcall	.-276    	; 0xb0 <lcd_write_4>
+ 1c4:	8f e1       	ldi	r24, 0x1F	; 31
+ 1c6:	93 e0       	ldi	r25, 0x03	; 3
+ 1c8:	01 97       	sbiw	r24, 0x01	; 1
+ 1ca:	f1 f7       	brne	.-4      	; 0x1c8 <lcd_init_4f+0x2c>
+ 1cc:	00 c0       	rjmp	.+0      	; 0x1ce <lcd_init_4f+0x32>
 	_delay_us(200);						// Delay of 200 us
 
 	lcd_write_4(lcd_FunctionReset);		// Third part of reset sequence
- a7c:	00 00       	nop
- a7e:	80 e3       	ldi	r24, 0x30	; 48
- a80:	6e df       	rcall	.-292    	; 0x95e <lcd_write_4>
- a82:	8f e3       	ldi	r24, 0x3F	; 63
- a84:	91 e0       	ldi	r25, 0x01	; 1
- a86:	01 97       	sbiw	r24, 0x01	; 1
- a88:	f1 f7       	brne	.-4      	; 0xa86 <lcd_init_4f+0x3c>
- a8a:	00 c0       	rjmp	.+0      	; 0xa8c <lcd_init_4f+0x42>
+ 1ce:	00 00       	nop
+ 1d0:	80 e3       	ldi	r24, 0x30	; 48
+ 1d2:	6e df       	rcall	.-292    	; 0xb0 <lcd_write_4>
+ 1d4:	8f e3       	ldi	r24, 0x3F	; 63
+ 1d6:	91 e0       	ldi	r25, 0x01	; 1
+ 1d8:	01 97       	sbiw	r24, 0x01	; 1
+ 1da:	f1 f7       	brne	.-4      	; 0x1d8 <lcd_init_4f+0x3c>
+ 1dc:	00 c0       	rjmp	.+0      	; 0x1de <lcd_init_4f+0x42>
 	/* Preliminary Function Set instruction - used only to set the 4-bit mode.
 	 The number of lines or the font cannot be set at this time since the controller is still in the
 	 8-bit mode, but the data transfer mode can be changed since this parameter is determined by one
 	 of the upper four bits of the instruction. */
 	
 	lcd_write_4(lcd_FunctionSet4bit);	// Set 4-bit mode
- a8c:	00 00       	nop
- a8e:	88 e2       	ldi	r24, 0x28	; 40
+ 1de:	00 00       	nop
+ 1e0:	88 e2       	ldi	r24, 0x28	; 40
 	// From this point on the busy flag is available
 
 	// Function Set instruction
 	lcd_check_BF_4();    // Makes sure LCD controller is ready
- a90:	66 df       	rcall	.-308    	; 0x95e <lcd_write_4>
+ 1e2:	66 df       	rcall	.-308    	; 0xb0 <lcd_write_4>
                          
 	lcd_write_instruction_4f(lcd_FunctionSet4bit);  // Set mode, lines, and font
- a92:	be df       	rcall	.-132    	; 0xa10 <lcd_check_BF_4>
- a94:	88 e2       	ldi	r24, 0x28	; 40
+ 1e4:	be df       	rcall	.-132    	; 0x162 <lcd_check_BF_4>
+ 1e6:	88 e2       	ldi	r24, 0x28	; 40
 	/*The next three instructions are specified in the data sheet as part of the initialization routine,
 	  so it is a good idea (but probably not necessary) to do them just as specified and then redo them
 	  later if the application requires a different configuration.*/
 
 	/* Display On/Off Control instruction */
 	lcd_check_BF_4();
- a96:	b0 df       	rcall	.-160    	; 0x9f8 <lcd_write_instruction_4f>
+ 1e8:	b0 df       	rcall	.-160    	; 0x14a <lcd_write_instruction_4f>
 	lcd_write_instruction_4f(lcd_DisplayOff);       // Turn display OFF
- a98:	bb df       	rcall	.-138    	; 0xa10 <lcd_check_BF_4>
+ 1ea:	bb df       	rcall	.-138    	; 0x162 <lcd_check_BF_4>
 
 	/* Clear Display instruction */
 	lcd_check_BF_4();
- a9a:	88 e0       	ldi	r24, 0x08	; 8
+ 1ec:	88 e0       	ldi	r24, 0x08	; 8
 	lcd_write_instruction_4f(lcd_Clear);            // Clear display RAM
- a9c:	ad df       	rcall	.-166    	; 0x9f8 <lcd_write_instruction_4f>
- a9e:	b8 df       	rcall	.-144    	; 0xa10 <lcd_check_BF_4>
- aa0:	81 e0       	ldi	r24, 0x01	; 1
+ 1ee:	ad df       	rcall	.-166    	; 0x14a <lcd_write_instruction_4f>
+ 1f0:	b8 df       	rcall	.-144    	; 0x162 <lcd_check_BF_4>
+ 1f2:	81 e0       	ldi	r24, 0x01	; 1
 	
 	/* Entry Mode Set instruction */
 	lcd_check_BF_4();
- aa2:	aa df       	rcall	.-172    	; 0x9f8 <lcd_write_instruction_4f>
- aa4:	b5 df       	rcall	.-150    	; 0xa10 <lcd_check_BF_4>
+ 1f4:	aa df       	rcall	.-172    	; 0x14a <lcd_write_instruction_4f>
+ 1f6:	b5 df       	rcall	.-150    	; 0x162 <lcd_check_BF_4>
 	lcd_write_instruction_4f(lcd_EntryMode);        // Set desired shift characteristics
- aa6:	86 e0       	ldi	r24, 0x06	; 6
- aa8:	a7 df       	rcall	.-178    	; 0x9f8 <lcd_write_instruction_4f>
- aaa:	b2 df       	rcall	.-156    	; 0xa10 <lcd_check_BF_4>
+ 1f8:	86 e0       	ldi	r24, 0x06	; 6
+ 1fa:	a7 df       	rcall	.-178    	; 0x14a <lcd_write_instruction_4f>
+ 1fc:	b2 df       	rcall	.-156    	; 0x162 <lcd_check_BF_4>
 	/*This is the end of the LCD controller initialization as specified in the data sheet, but the display
 	  has been left in the OFF condition.  This is a good time to turn the display back ON. */
 
 	/* Display On/Off Control instruction */
 	lcd_check_BF_4();
- aac:	8c e0       	ldi	r24, 0x0C	; 12
- aae:	a4 cf       	rjmp	.-184    	; 0x9f8 <lcd_write_instruction_4f>
+ 1fe:	8c e0       	ldi	r24, 0x0C	; 12
+ 200:	a4 cf       	rjmp	.-184    	; 0x14a <lcd_write_instruction_4f>
 	lcd_write_instruction_4f(lcd_DisplayOn);        // turn the display ON
- ab0:	08 95       	ret
+ 202:	08 95       	ret
 
-00000ab2 <initLCD>:
- ab2:	4d df       	rcall	.-358    	; 0x94e <configLCDPorts>
- ab4:	ca df       	rcall	.-108    	; 0xa4a <lcd_init_4f>
- ab6:	2f ef       	ldi	r18, 0xFF	; 255
+00000204 <initLCD>:
+ 204:	4d df       	rcall	.-358    	; 0xa0 <configLCDPorts>
+ 206:	ca df       	rcall	.-108    	; 0x19c <lcd_init_4f>
+ 208:	2f ef       	ldi	r18, 0xFF	; 255
 	#else
 		//round up by default
 		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
 	#endif
 
 	__builtin_avr_delay_cycles(__ticks_dc);
- ab8:	81 ee       	ldi	r24, 0xE1	; 225
- aba:	94 e0       	ldi	r25, 0x04	; 4
- abc:	21 50       	subi	r18, 0x01	; 1
- abe:	80 40       	sbci	r24, 0x00	; 0
- ac0:	90 40       	sbci	r25, 0x00	; 0
- ac2:	e1 f7       	brne	.-8      	; 0xabc <initLCD+0xa>
- ac4:	00 c0       	rjmp	.+0      	; 0xac6 <initLCD+0x14>
- ac6:	00 00       	nop
- ac8:	08 95       	ret
+ 20a:	81 ee       	ldi	r24, 0xE1	; 225
+ 20c:	94 e0       	ldi	r25, 0x04	; 4
+ 20e:	21 50       	subi	r18, 0x01	; 1
+ 210:	80 40       	sbci	r24, 0x00	; 0
+ 212:	90 40       	sbci	r25, 0x00	; 0
+ 214:	e1 f7       	brne	.-8      	; 0x20e <initLCD+0xa>
+ 216:	00 c0       	rjmp	.+0      	; 0x218 <initLCD+0x14>
+ 218:	00 00       	nop
+ 21a:	08 95       	ret
 
-00000aca <alarm_receive_callback.3089>:
- aca:	81 30       	cpi	r24, 0x01	; 1
-	ds3231_time_t time;
-	ds3231_alarm1_mode_t mode;
+0000021c <main>:
 
-	void alarm_receive_callback(uint8_t type)
-	{
-		switch (type)
- acc:	61 f0       	breq	.+24     	; 0xae6 <alarm_receive_callback.3089+0x1c>
- ace:	82 30       	cpi	r24, 0x02	; 2
- ad0:	99 f4       	brne	.+38     	; 0xaf8 <alarm_receive_callback.3089+0x2e>
-		{
-			case DS3231_STATUS_ALARM_2 :
-			{
-				ds3231_alarm_clear_flag(DS3231_ALARM_2);
- ad2:	81 e0       	ldi	r24, 0x01	; 1
- ad4:	96 de       	rcall	.-724    	; 0x802 <ds3231_alarm_clear_flag>
-				ds3231_interface_debug_print("ds3231: irq alarm2.\n");
- ad6:	83 ea       	ldi	r24, 0xA3	; 163
- ad8:	97 e0       	ldi	r25, 0x07	; 7
- ada:	9f 93       	push	r25
- adc:	8f 93       	push	r24
- ade:	ea de       	rcall	.-556    	; 0x8b4 <ds3231_interface_debug_print>
-			
-				break;
- ae0:	0f 90       	pop	r0
- ae2:	0f 90       	pop	r0
-			}
-			case DS3231_STATUS_ALARM_1 :
-			{
-				ds3231_alarm_clear_flag(DS3231_ALARM_1);
- ae4:	08 95       	ret
- ae6:	80 e0       	ldi	r24, 0x00	; 0
- ae8:	8c de       	rcall	.-744    	; 0x802 <ds3231_alarm_clear_flag>
-				ds3231_interface_debug_print("ds3231: irq alarm1.\n");
- aea:	88 eb       	ldi	r24, 0xB8	; 184
- aec:	97 e0       	ldi	r25, 0x07	; 7
- aee:	9f 93       	push	r25
- af0:	8f 93       	push	r24
- af2:	e0 de       	rcall	.-576    	; 0x8b4 <ds3231_interface_debug_print>
-			
-				break;
- af4:	0f 90       	pop	r0
- af6:	0f 90       	pop	r0
- af8:	08 95       	ret
-
-00000afa <main>:
-#include "LCD.h"
-
+#define ALARM 0
 
 int main (void)
 {
 	initLCD();
- afa:	db df       	rcall	.-74     	; 0xab2 <initLCD>
-			}
-		}
-	}
-
-
-	res = ds3231_alarm_init(alarm_receive_callback);
- afc:	85 e6       	ldi	r24, 0x65	; 101
- afe:	95 e0       	ldi	r25, 0x05	; 5
- b00:	d7 dd       	rcall	.-1106   	; 0x6b0 <ds3231_alarm_init>
- b02:	21 e0       	ldi	r18, 0x01	; 1
- b04:	30 e0       	ldi	r19, 0x00	; 0
- b06:	81 11       	cpse	r24, r1
- b08:	02 c0       	rjmp	.+4      	; 0xb0e <main+0x14>
- b0a:	20 e0       	ldi	r18, 0x00	; 0
- b0c:	30 e0       	ldi	r19, 0x00	; 0
+ 21c:	f3 df       	rcall	.-26     	; 0x204 <initLCD>
 	displayLCD_main(1, "A1M1: ", A1M1, "NONE");
 	displayLCD_main(2, "A1M2: ", A1M2, "NONE");
 	displayLCD_main(3, "A1M3: ", A1M3, "NONE");
 	displayLCD_main(4, "A1M4: ", A1M4, "NONE");
 #endif
 }
- b0e:	c9 01       	movw	r24, r18
- b10:	08 95       	ret
+ 21e:	80 e0       	ldi	r24, 0x00	; 0
+ 220:	90 e0       	ldi	r25, 0x00	; 0
+ 222:	08 95       	ret
 
-00000b12 <__divsf3>:
- b12:	0c d0       	rcall	.+24     	; 0xb2c <__divsf3x>
- b14:	ae c0       	rjmp	.+348    	; 0xc72 <__fp_round>
- b16:	a6 d0       	rcall	.+332    	; 0xc64 <__fp_pscB>
- b18:	40 f0       	brcs	.+16     	; 0xb2a <__divsf3+0x18>
- b1a:	9d d0       	rcall	.+314    	; 0xc56 <__fp_pscA>
- b1c:	30 f0       	brcs	.+12     	; 0xb2a <__divsf3+0x18>
- b1e:	21 f4       	brne	.+8      	; 0xb28 <__divsf3+0x16>
- b20:	5f 3f       	cpi	r21, 0xFF	; 255
- b22:	19 f0       	breq	.+6      	; 0xb2a <__divsf3+0x18>
- b24:	8f c0       	rjmp	.+286    	; 0xc44 <__fp_inf>
- b26:	51 11       	cpse	r21, r1
- b28:	d8 c0       	rjmp	.+432    	; 0xcda <__fp_szero>
- b2a:	92 c0       	rjmp	.+292    	; 0xc50 <__fp_nan>
+00000224 <_exit>:
+ 224:	f8 94       	cli
 
-00000b2c <__divsf3x>:
- b2c:	b3 d0       	rcall	.+358    	; 0xc94 <__fp_split3>
- b2e:	98 f3       	brcs	.-26     	; 0xb16 <__divsf3+0x4>
-
-00000b30 <__divsf3_pse>:
- b30:	99 23       	and	r25, r25
- b32:	c9 f3       	breq	.-14     	; 0xb26 <__divsf3+0x14>
- b34:	55 23       	and	r21, r21
- b36:	b1 f3       	breq	.-20     	; 0xb24 <__divsf3+0x12>
- b38:	95 1b       	sub	r25, r21
- b3a:	55 0b       	sbc	r21, r21
- b3c:	bb 27       	eor	r27, r27
- b3e:	aa 27       	eor	r26, r26
- b40:	62 17       	cp	r22, r18
- b42:	73 07       	cpc	r23, r19
- b44:	84 07       	cpc	r24, r20
- b46:	38 f0       	brcs	.+14     	; 0xb56 <__divsf3_pse+0x26>
- b48:	9f 5f       	subi	r25, 0xFF	; 255
- b4a:	5f 4f       	sbci	r21, 0xFF	; 255
- b4c:	22 0f       	add	r18, r18
- b4e:	33 1f       	adc	r19, r19
- b50:	44 1f       	adc	r20, r20
- b52:	aa 1f       	adc	r26, r26
- b54:	a9 f3       	breq	.-22     	; 0xb40 <__divsf3_pse+0x10>
- b56:	33 d0       	rcall	.+102    	; 0xbbe <__divsf3_pse+0x8e>
- b58:	0e 2e       	mov	r0, r30
- b5a:	3a f0       	brmi	.+14     	; 0xb6a <__divsf3_pse+0x3a>
- b5c:	e0 e8       	ldi	r30, 0x80	; 128
- b5e:	30 d0       	rcall	.+96     	; 0xbc0 <__divsf3_pse+0x90>
- b60:	91 50       	subi	r25, 0x01	; 1
- b62:	50 40       	sbci	r21, 0x00	; 0
- b64:	e6 95       	lsr	r30
- b66:	00 1c       	adc	r0, r0
- b68:	ca f7       	brpl	.-14     	; 0xb5c <__divsf3_pse+0x2c>
- b6a:	29 d0       	rcall	.+82     	; 0xbbe <__divsf3_pse+0x8e>
- b6c:	fe 2f       	mov	r31, r30
- b6e:	27 d0       	rcall	.+78     	; 0xbbe <__divsf3_pse+0x8e>
- b70:	66 0f       	add	r22, r22
- b72:	77 1f       	adc	r23, r23
- b74:	88 1f       	adc	r24, r24
- b76:	bb 1f       	adc	r27, r27
- b78:	26 17       	cp	r18, r22
- b7a:	37 07       	cpc	r19, r23
- b7c:	48 07       	cpc	r20, r24
- b7e:	ab 07       	cpc	r26, r27
- b80:	b0 e8       	ldi	r27, 0x80	; 128
- b82:	09 f0       	breq	.+2      	; 0xb86 <__divsf3_pse+0x56>
- b84:	bb 0b       	sbc	r27, r27
- b86:	80 2d       	mov	r24, r0
- b88:	bf 01       	movw	r22, r30
- b8a:	ff 27       	eor	r31, r31
- b8c:	93 58       	subi	r25, 0x83	; 131
- b8e:	5f 4f       	sbci	r21, 0xFF	; 255
- b90:	2a f0       	brmi	.+10     	; 0xb9c <__divsf3_pse+0x6c>
- b92:	9e 3f       	cpi	r25, 0xFE	; 254
- b94:	51 05       	cpc	r21, r1
- b96:	68 f0       	brcs	.+26     	; 0xbb2 <__divsf3_pse+0x82>
- b98:	55 c0       	rjmp	.+170    	; 0xc44 <__fp_inf>
- b9a:	9f c0       	rjmp	.+318    	; 0xcda <__fp_szero>
- b9c:	5f 3f       	cpi	r21, 0xFF	; 255
- b9e:	ec f3       	brlt	.-6      	; 0xb9a <__divsf3_pse+0x6a>
- ba0:	98 3e       	cpi	r25, 0xE8	; 232
- ba2:	dc f3       	brlt	.-10     	; 0xb9a <__divsf3_pse+0x6a>
- ba4:	86 95       	lsr	r24
- ba6:	77 95       	ror	r23
- ba8:	67 95       	ror	r22
- baa:	b7 95       	ror	r27
- bac:	f7 95       	ror	r31
- bae:	9f 5f       	subi	r25, 0xFF	; 255
- bb0:	c9 f7       	brne	.-14     	; 0xba4 <__divsf3_pse+0x74>
- bb2:	88 0f       	add	r24, r24
- bb4:	91 1d       	adc	r25, r1
- bb6:	96 95       	lsr	r25
- bb8:	87 95       	ror	r24
- bba:	97 f9       	bld	r25, 7
- bbc:	08 95       	ret
- bbe:	e1 e0       	ldi	r30, 0x01	; 1
- bc0:	66 0f       	add	r22, r22
- bc2:	77 1f       	adc	r23, r23
- bc4:	88 1f       	adc	r24, r24
- bc6:	bb 1f       	adc	r27, r27
- bc8:	62 17       	cp	r22, r18
- bca:	73 07       	cpc	r23, r19
- bcc:	84 07       	cpc	r24, r20
- bce:	ba 07       	cpc	r27, r26
- bd0:	20 f0       	brcs	.+8      	; 0xbda <__divsf3_pse+0xaa>
- bd2:	62 1b       	sub	r22, r18
- bd4:	73 0b       	sbc	r23, r19
- bd6:	84 0b       	sbc	r24, r20
- bd8:	ba 0b       	sbc	r27, r26
- bda:	ee 1f       	adc	r30, r30
- bdc:	88 f7       	brcc	.-30     	; 0xbc0 <__divsf3_pse+0x90>
- bde:	e0 95       	com	r30
- be0:	08 95       	ret
-
-00000be2 <__fixsfsi>:
- be2:	04 d0       	rcall	.+8      	; 0xbec <__fixunssfsi>
- be4:	68 94       	set
- be6:	b1 11       	cpse	r27, r1
- be8:	78 c0       	rjmp	.+240    	; 0xcda <__fp_szero>
- bea:	08 95       	ret
-
-00000bec <__fixunssfsi>:
- bec:	5b d0       	rcall	.+182    	; 0xca4 <__fp_splitA>
- bee:	88 f0       	brcs	.+34     	; 0xc12 <__fixunssfsi+0x26>
- bf0:	9f 57       	subi	r25, 0x7F	; 127
- bf2:	90 f0       	brcs	.+36     	; 0xc18 <__fixunssfsi+0x2c>
- bf4:	b9 2f       	mov	r27, r25
- bf6:	99 27       	eor	r25, r25
- bf8:	b7 51       	subi	r27, 0x17	; 23
- bfa:	a0 f0       	brcs	.+40     	; 0xc24 <__fixunssfsi+0x38>
- bfc:	d1 f0       	breq	.+52     	; 0xc32 <__fixunssfsi+0x46>
- bfe:	66 0f       	add	r22, r22
- c00:	77 1f       	adc	r23, r23
- c02:	88 1f       	adc	r24, r24
- c04:	99 1f       	adc	r25, r25
- c06:	1a f0       	brmi	.+6      	; 0xc0e <__fixunssfsi+0x22>
- c08:	ba 95       	dec	r27
- c0a:	c9 f7       	brne	.-14     	; 0xbfe <__fixunssfsi+0x12>
- c0c:	12 c0       	rjmp	.+36     	; 0xc32 <__fixunssfsi+0x46>
- c0e:	b1 30       	cpi	r27, 0x01	; 1
- c10:	81 f0       	breq	.+32     	; 0xc32 <__fixunssfsi+0x46>
- c12:	62 d0       	rcall	.+196    	; 0xcd8 <__fp_zero>
- c14:	b1 e0       	ldi	r27, 0x01	; 1
- c16:	08 95       	ret
- c18:	5f c0       	rjmp	.+190    	; 0xcd8 <__fp_zero>
- c1a:	67 2f       	mov	r22, r23
- c1c:	78 2f       	mov	r23, r24
- c1e:	88 27       	eor	r24, r24
- c20:	b8 5f       	subi	r27, 0xF8	; 248
- c22:	39 f0       	breq	.+14     	; 0xc32 <__fixunssfsi+0x46>
- c24:	b9 3f       	cpi	r27, 0xF9	; 249
- c26:	cc f3       	brlt	.-14     	; 0xc1a <__fixunssfsi+0x2e>
- c28:	86 95       	lsr	r24
- c2a:	77 95       	ror	r23
- c2c:	67 95       	ror	r22
- c2e:	b3 95       	inc	r27
- c30:	d9 f7       	brne	.-10     	; 0xc28 <__fixunssfsi+0x3c>
- c32:	3e f4       	brtc	.+14     	; 0xc42 <__fixunssfsi+0x56>
- c34:	90 95       	com	r25
- c36:	80 95       	com	r24
- c38:	70 95       	com	r23
- c3a:	61 95       	neg	r22
- c3c:	7f 4f       	sbci	r23, 0xFF	; 255
- c3e:	8f 4f       	sbci	r24, 0xFF	; 255
- c40:	9f 4f       	sbci	r25, 0xFF	; 255
- c42:	08 95       	ret
-
-00000c44 <__fp_inf>:
- c44:	97 f9       	bld	r25, 7
- c46:	9f 67       	ori	r25, 0x7F	; 127
- c48:	80 e8       	ldi	r24, 0x80	; 128
- c4a:	70 e0       	ldi	r23, 0x00	; 0
- c4c:	60 e0       	ldi	r22, 0x00	; 0
- c4e:	08 95       	ret
-
-00000c50 <__fp_nan>:
- c50:	9f ef       	ldi	r25, 0xFF	; 255
- c52:	80 ec       	ldi	r24, 0xC0	; 192
- c54:	08 95       	ret
-
-00000c56 <__fp_pscA>:
- c56:	00 24       	eor	r0, r0
- c58:	0a 94       	dec	r0
- c5a:	16 16       	cp	r1, r22
- c5c:	17 06       	cpc	r1, r23
- c5e:	18 06       	cpc	r1, r24
- c60:	09 06       	cpc	r0, r25
- c62:	08 95       	ret
-
-00000c64 <__fp_pscB>:
- c64:	00 24       	eor	r0, r0
- c66:	0a 94       	dec	r0
- c68:	12 16       	cp	r1, r18
- c6a:	13 06       	cpc	r1, r19
- c6c:	14 06       	cpc	r1, r20
- c6e:	05 06       	cpc	r0, r21
- c70:	08 95       	ret
-
-00000c72 <__fp_round>:
- c72:	09 2e       	mov	r0, r25
- c74:	03 94       	inc	r0
- c76:	00 0c       	add	r0, r0
- c78:	11 f4       	brne	.+4      	; 0xc7e <__fp_round+0xc>
- c7a:	88 23       	and	r24, r24
- c7c:	52 f0       	brmi	.+20     	; 0xc92 <__fp_round+0x20>
- c7e:	bb 0f       	add	r27, r27
- c80:	40 f4       	brcc	.+16     	; 0xc92 <__fp_round+0x20>
- c82:	bf 2b       	or	r27, r31
- c84:	11 f4       	brne	.+4      	; 0xc8a <__fp_round+0x18>
- c86:	60 ff       	sbrs	r22, 0
- c88:	04 c0       	rjmp	.+8      	; 0xc92 <__fp_round+0x20>
- c8a:	6f 5f       	subi	r22, 0xFF	; 255
- c8c:	7f 4f       	sbci	r23, 0xFF	; 255
- c8e:	8f 4f       	sbci	r24, 0xFF	; 255
- c90:	9f 4f       	sbci	r25, 0xFF	; 255
- c92:	08 95       	ret
-
-00000c94 <__fp_split3>:
- c94:	57 fd       	sbrc	r21, 7
- c96:	90 58       	subi	r25, 0x80	; 128
- c98:	44 0f       	add	r20, r20
- c9a:	55 1f       	adc	r21, r21
- c9c:	59 f0       	breq	.+22     	; 0xcb4 <__fp_splitA+0x10>
- c9e:	5f 3f       	cpi	r21, 0xFF	; 255
- ca0:	71 f0       	breq	.+28     	; 0xcbe <__fp_splitA+0x1a>
- ca2:	47 95       	ror	r20
-
-00000ca4 <__fp_splitA>:
- ca4:	88 0f       	add	r24, r24
- ca6:	97 fb       	bst	r25, 7
- ca8:	99 1f       	adc	r25, r25
- caa:	61 f0       	breq	.+24     	; 0xcc4 <__fp_splitA+0x20>
- cac:	9f 3f       	cpi	r25, 0xFF	; 255
- cae:	79 f0       	breq	.+30     	; 0xcce <__fp_splitA+0x2a>
- cb0:	87 95       	ror	r24
- cb2:	08 95       	ret
- cb4:	12 16       	cp	r1, r18
- cb6:	13 06       	cpc	r1, r19
- cb8:	14 06       	cpc	r1, r20
- cba:	55 1f       	adc	r21, r21
- cbc:	f2 cf       	rjmp	.-28     	; 0xca2 <__fp_split3+0xe>
- cbe:	46 95       	lsr	r20
- cc0:	f1 df       	rcall	.-30     	; 0xca4 <__fp_splitA>
- cc2:	08 c0       	rjmp	.+16     	; 0xcd4 <__fp_splitA+0x30>
- cc4:	16 16       	cp	r1, r22
- cc6:	17 06       	cpc	r1, r23
- cc8:	18 06       	cpc	r1, r24
- cca:	99 1f       	adc	r25, r25
- ccc:	f1 cf       	rjmp	.-30     	; 0xcb0 <__fp_splitA+0xc>
- cce:	86 95       	lsr	r24
- cd0:	71 05       	cpc	r23, r1
- cd2:	61 05       	cpc	r22, r1
- cd4:	08 94       	sec
- cd6:	08 95       	ret
-
-00000cd8 <__fp_zero>:
- cd8:	e8 94       	clt
-
-00000cda <__fp_szero>:
- cda:	bb 27       	eor	r27, r27
- cdc:	66 27       	eor	r22, r22
- cde:	77 27       	eor	r23, r23
- ce0:	cb 01       	movw	r24, r22
- ce2:	97 f9       	bld	r25, 7
- ce4:	08 95       	ret
-
-00000ce6 <_exit>:
- ce6:	f8 94       	cli
-
-00000ce8 <__stop_program>:
- ce8:	ff cf       	rjmp	.-2      	; 0xce8 <__stop_program>
+00000226 <__stop_program>:
+ 226:	ff cf       	rjmp	.-2      	; 0x226 <__stop_program>
