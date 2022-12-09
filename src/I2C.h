@@ -7,9 +7,6 @@
 #endif
 
 	#include <avr/io.h>
-
-	/* Address of I2C device */
-	#define I2C_DEVICE                 0x68
 	
 	/* I2C clock in Hz */
 	#define SCL_CLOCK  100000L

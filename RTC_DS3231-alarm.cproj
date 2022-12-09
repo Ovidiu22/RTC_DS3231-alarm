@@ -298,6 +298,12 @@
     <Compile Include="src\driver_ds3231_alarm.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="src\driver_ds3231_basic.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\driver_ds3231_basic.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="src\driver_ds3231_interface.c">
       <SubType>compile</SubType>
     </Compile>

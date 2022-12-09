@@ -4,6 +4,7 @@
 
 #include <inttypes.h>
 #include <compat/twi.h>
+#include "driver_ds3231.h"
 #include "I2C.h"
 #include "LCD.h"
 
@@ -16,7 +17,7 @@ Description:Starts communication over I2C and send a value
 void write_i2c(unsigned char value)
 {
 	/* Send START condition with SLA+W */
-	i2c_start((I2C_DEVICE<<1)+I2C_WRITE);
+	i2c_start((DS3231_ADDRESS<<1)+I2C_WRITE);
 	/* Send data */
 	i2c_write(value);
 	/* Send stop condition */

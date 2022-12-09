@@ -57,6 +57,9 @@ extern "C"{
  * @{
  */
 
+#define DS3231_ADDRESS        0x68        /**< iic device address */ 
+
+
 /**
  * @brief ds3231 bool enumeration definition
  */
