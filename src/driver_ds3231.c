@@ -496,7 +496,7 @@ uint8_t ds3231_set_alarm1(ds3231_handle_t *handle, ds3231_time_t *t, ds3231_alar
     {
         handle->debug_print("ds3231: format is invalid.\n");                                                                       /* format is invalid */
         
-        return 1;                                                                                                                  /* return error */
+        return 3;                                                                                                                  /* return error */
     }
     
     res = a_ds3231_iic_write(handle, DS3231_REG_ALARM1_SECOND, a_ds3231_hex2bcd(t->second) | ((mode & 0x01) << 7));                /* write second */
@@ -504,14 +504,14 @@ uint8_t ds3231_set_alarm1(ds3231_handle_t *handle, ds3231_time_t *t, ds3231_alar
     {
         handle->debug_print("ds3231: write alarm1 second failed.\n");                                                              /* write alarm1 second failed */
         
-        return 1;                                                                                                                  /* return error */
+        return 6;                                                                                                                  /* return error */
     }
     res = a_ds3231_iic_write(handle, DS3231_REG_ALARM1_MINUTE, a_ds3231_hex2bcd(t->minute) | (((mode >> 1) & 0x01) << 7));         /* write minute */
     if (res != 0)                                                                                                                  /* check result */
     {
         handle->debug_print("ds3231: write alarm1 minute failed.\n");                                                              /* write alarm1 minute failed */
         
-        return 1;                                                                                                                  /* return error */
+        return 6;                                                                                                                  /* return error */
     }
     if (t->format == DS3231_FORMAT_12H)                                                                                            /* if 12H */
     {
@@ -526,7 +526,7 @@ uint8_t ds3231_set_alarm1(ds3231_handle_t *handle, ds3231_time_t *t, ds3231_alar
     {
         handle->debug_print("ds3231: write alarm1 hour failed.\n");                                                                /* write alarm1 hour failed */
         
-        return 1;                                                                                                                  /* return error */
+        return 7;                                                                                                                  /* return error */
     }
     if (mode >= DS3231_ALARM1_MODE_WEEK_HOUR_MINUTE_SECOND_MATCH)                                                                  /* if week */
     {
@@ -541,7 +541,7 @@ uint8_t ds3231_set_alarm1(ds3231_handle_t *handle, ds3231_time_t *t, ds3231_alar
     {
         handle->debug_print("ds3231: write alarm1 week failed.\n");                                                                /* write alarm1 week failed */
         
-        return 1;                                                                                                                  /* return error */
+        return 8;                                                                                                                  /* return error */
     }
     
     return 0;                                                                                                                      /* success return 0 */
