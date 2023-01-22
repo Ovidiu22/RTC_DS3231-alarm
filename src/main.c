@@ -20,23 +20,16 @@ int main (void)
 	ds3231_basic_init();
 
 	/* Set alarm */
-	i2c_start((DS3231_ADDRESS<<1)+I2C_WRITE);
-	i2c_write(DS3231_REG_ALARM1_SECOND);
-	i2c_write(dec2bcd(33));	// Seconds in dec
-	
-	i2c_start((DS3231_ADDRESS<<1)+I2C_WRITE);
-	i2c_write(DS3231_REG_CONTROL);
-	i2c_write(0x5);		// Set bit 0 and 2 (alarm 1 and interrupt)
+	write_i2c(DS3231_REG_ALARM1_SECOND, dec2bcd(33));
+	write_i2c(DS3231_REG_CONTROL, 0x5);
+	write_i2c(DS3231_REG_STATUS, 0x0);
 
 	/* Read and display current time */
 	while(1)
 	{
+		uint8_t st_reg = read_i2c(DS3231_REG_STATUS);
+		
 		i2c_start((DS3231_ADDRESS<<1)+I2C_WRITE);
-		i2c_write(DS3231_REG_STATUS);
-		/* Send START condition with SLA+R */
-		i2c_rep_start((DS3231_ADDRESS<<1)+I2C_READ);
-		/* Receive data */
-		uint8_t st_reg = i2c_readNak();
 		
 		ds3231_basic_get_time(&t);
 		displayLCD_main(1, "Alarm flag: ", (st_reg & 0x01), "NONE");
@@ -47,9 +40,7 @@ int main (void)
 		if ((st_reg & 0x01) > 0)
 		{
 			_delay_ms(200);
-			i2c_start((DS3231_ADDRESS<<1)+I2C_WRITE);
-			i2c_write(DS3231_REG_STATUS);
-			i2c_write(0x0);
+			write_i2c(DS3231_REG_STATUS, 0x0);
 		}
 	}
 	return 0;
